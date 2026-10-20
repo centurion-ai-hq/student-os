@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student OS Guide</title>
+<style>
+:root{
+  --night:#1C2333; --sand:#EFE3D0; --copper:#B87333; --patina:#4A8C82;
+  --bg:#EFE3D0; --ink:#1C2333; --card:#F8F1E4; --line:#d9c9ae; --accent:#9a5a22; --good:#2f6b62;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#1C2333; --ink:#EFE3D0; --card:#26304a; --line:#3a4668; --accent:#d9944f; --good:#6fb5aa; }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 28px}
+h1{margin:0 0 6px;font-size:26px}
+h2{margin:18px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.bottom{border-left:6px solid var(--copper);background:var(--card);padding:10px 14px;border-radius:6px;font-size:17px;font-weight:600}
+p{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--patina);border-radius:8px;padding:10px}
+.card b{display:block;color:var(--good);font-size:16px}
+.card span{display:block;font-size:13px;margin-top:4px}
+.card .say{color:var(--accent);font-size:12.5px;margin-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap;font-weight:700;color:var(--good)}
+ol{margin:0;padding-left:22px}
+li{margin:3px 0}
+.strip{background:var(--night);color:var(--sand);border-radius:8px;padding:10px 14px;margin-top:16px}
+.strip h2{color:#d9944f;margin:0 0 6px}
+.strip ul{margin:0;padding-left:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3px 18px}
+code{background:rgba(127,127,127,.18);padding:1px 5px;border-radius:4px;font-size:.92em}
+@media print{
+  @page{size:letter;margin:.45in}
+  body{font-size:12px;background:#fff;color:#1C2333;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  :root{--bg:#fff;--ink:#1C2333;--card:#F8F1E4;--line:#d9c9ae;--accent:#9a5a22;--good:#2f6b62}
+  main{padding:0}
+  h1{font-size:22px} .bottom{font-size:14px}
+  .strip{background:#1C2333;color:#EFE3D0}
+}
+</style>
+</head>
+<body>
+<main>
+  <h1>Student OS</h1>
+  <p class="bottom">Five commands that make Claude Code teach you while it helps.</p>
+
+  <h2>Why</h2>
+  <p>Cognitive debt is what builds up when AI does the thinking and you only copy the answer: it works today, but you cannot explain it tomorrow. These commands keep you the one who understands.</p>
+
+  <h2>Your 5 commands</h2>
+  <div class="grid">
+    <div class="card"><b>/tutor</b><span>Explains anything in plain English.</span><span class="say">"I don't understand this error"</span></div>
+    <div class="card"><b>/grade-it</b><span>Grades your work before you submit.</span><span class="say">"Grade my work"</span></div>
+    <div class="card"><b>/handoff</b><span>Saves your place for a fresh session.</span><span class="say">"Save my place"</span></div>
+    <div class="card"><b>/budget</b><span>Stretches your Pro plan.</span><span class="say">"I am running out of usage"</span></div>
+    <div class="card"><b>/agent-builder</b><span>Builds your own helper.</span><span class="say">"Make me a helper that summarizes my readings"</span></div>
+  </div>
+
+  <h2>2 safety hooks</h2>
+  <table>
+    <tr><td>welcome</td><td>Shows your commands every time you start a session.</td></tr>
+    <tr><td>guard</td><td>Blocks deleting your home folder, force push, hard reset, and repo delete.</td></tr>
+  </table>
+
+  <h2>Install in 3 steps</h2>
+  <ol>
+    <li>Copy the text in <code>INSTALL-PROMPT.md</code>.</li>
+    <li>Paste it into Claude Code.</li>
+    <li>Pick "Install everything", or choose one by one. Then start a new session.</li>
+  </ol>
+
+  <div class="strip">
+    <h2>Save your $20 plan</h2>
+    <ul>
+      <li>Type <code>/model sonnet</code> for everyday work.</li>
+      <li>Use plan mode (Shift+Tab) before big tasks.</li>
+      <li>One task per session. Use <code>/handoff</code>, then start fresh.</li>
+      <li>Paste the error lines, not whole files.</li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>

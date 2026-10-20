@@ -1,8 +1,0 @@
-{
-  "name": "student",
-  "version": "0.1.0",
-  "description": "Student OS for CIS 591: tutor, explain-build, spec-loop, prove-it, handoff, budget.",
-  "author": { "name": "Luis Vega" },
-  "license": "MIT",
-  "keywords": ["student", "tutor", "learning", "cis591"]
-}
