@@ -1,0 +1,20 @@
+{
+  "name": "student-os",
+  "owner": {
+    "name": "Luis Vega"
+  },
+  "metadata": {
+    "description": "Six simple commands for CIS 591 students using Claude Code.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "student",
+      "source": "./plugins/student",
+      "description": "Student OS: a plain-English tutor, a study-guide builder, a build loop, proof checks, handoff notes, and Pro plan savings.",
+      "version": "0.1.0",
+      "category": "education",
+      "keywords": ["student", "tutor", "learning", "cis591"]
+    }
+  ]
+}
