@@ -1,14 +1,20 @@
 # Student OS
 
-Five simple commands for Claude Code in CIS 591.
+Nine simple commands for Claude Code in CIS 591.
 
 | Command | What it does |
 |---|---|
-| `/tutor` | Explains any word, error, assignment, or your build |
-| `/grade-it` | Grades your work against the rubric before you submit |
+| `/tutor` | Explains any word, error, assignment, or your whole build |
+| `/plan-first` | Research, plan, then build, with a check after each step |
+| `/fix-it` | Fixes one error and proves the fix by running it |
+| `/design` | Makes your page look professional, checked at 3 screen sizes |
+| `/spar` | Argues against your plan before you build it |
+| `/prompt-optimizer` | Turns a messy idea into one clean prompt |
+| `/token-max` | Stretches your $20 plan by picking the right model |
 | `/handoff` | Saves your place so a fresh session can continue |
-| `/budget` | Stretches your $20 Pro plan |
-| `/agent-builder` | Builds your own helper from a plain description |
+| `/skill-builder` | Builds your own command from a plain description |
+
+Plus three hooks (small helpers that run on their own): `welcome` shows your commands, `terse` keeps replies short, `guard` blocks dangerous commands.
 
 ## Install
 

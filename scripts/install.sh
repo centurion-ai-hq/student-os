@@ -2,7 +2,7 @@
 # Student OS installer. Copies skills and hooks, merges two hook lines into settings.json.
 # Usage:
 #   bash scripts/install.sh --all
-#   bash scripts/install.sh --skills tutor,grade-it --hooks welcome,guard
+#   bash scripts/install.sh --skills tutor,spar --hooks welcome,guard
 #   bash scripts/install.sh --all --none-hooks
 #   bash scripts/install.sh --uninstall
 set -u
@@ -13,8 +13,8 @@ SKILLS_DIR="$CLAUDE_DIR/skills"
 HOOKS_DIR="$CLAUDE_DIR/student-os/hooks"
 SETTINGS="$CLAUDE_DIR/settings.json"
 MARK=".student-os"
-ALL_SKILLS="tutor grade-it handoff budget agent-builder"
-ALL_HOOKS="welcome guard"
+ALL_SKILLS="tutor handoff plan-first token-max skill-builder prompt-optimizer spar fix-it design"
+ALL_HOOKS="welcome guard terse"
 TS="$(date +%Y%m%d-%H%M%S)"
 
 skills=""; hooks=""; uninstall=0; none_hooks=0
@@ -59,6 +59,7 @@ import json, os, shutil, sys
 mode, path, ts, hdir, want = sys.argv[1:6]
 want = [w for w in want.split(",") if w]
 SPEC = {"welcome": ("SessionStart", None, "welcome.sh"),
+        "terse": ("SessionStart", None, "terse.sh"),
         "guard": ("PreToolUse", "Bash", "guard.sh")}
 MARK = "student-os/hooks/"
 
@@ -139,6 +140,7 @@ print_manual() {
     first=0
     case "$h" in
       welcome) printf '  "SessionStart": [ { "hooks": [ { "type": "command", "command": "bash \\"%s/welcome.sh\\"", "timeout": 5 } ] } ]' "$HOOKS_DIR" ;;
+      terse)   printf '  "SessionStart": [ { "hooks": [ { "type": "command", "command": "bash \\"%s/terse.sh\\"", "timeout": 5 } ] } ]' "$HOOKS_DIR" ;;
       guard)   printf '  "PreToolUse": [ { "matcher": "Bash", "hooks": [ { "type": "command", "command": "bash \\"%s/guard.sh\\"", "timeout": 5 } ] } ]' "$HOOKS_DIR" ;;
     esac
   done
