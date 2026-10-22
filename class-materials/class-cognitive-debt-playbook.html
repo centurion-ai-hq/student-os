@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paying Down Cognitive Debt</title>
+<style>
+  :root{--night:#1C2333;--sand:#EFE3D0;--copper:#B87333;--patina:#4A8C82;--ink:#1C2333;--muted:#565d6e;--bg:#fff;--card:#faf6ef;--code:#f3ede2}
+  @media (prefers-color-scheme:dark){:root{--ink:#EFE3D0;--muted:#b4b0a6;--bg:#141a27;--card:#1f2738;--code:#0f1420}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  header{background:var(--night);color:var(--sand);padding:28px 20px}
+  header .in,main{max-width:920px;margin:0 auto}
+  header h1{margin:0 0 6px;font-size:28px}
+  header p{margin:0;opacity:.9}
+  main{padding:20px}
+  h2{font-size:20px;margin:28px 0 8px;color:var(--copper)}
+  .card{background:var(--card);border-radius:12px;padding:16px 18px;margin:12px 0;border-left:4px solid var(--copper)}
+  .card.teal{border-left-color:var(--patina)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid .card{margin:0}
+  .card h3{margin:0 0 6px;font-size:16px}
+  ol,ul{padding-left:20px;margin:6px 0}
+  li{margin:4px 0}
+  pre{background:var(--code);border-radius:10px;padding:14px;white-space:pre-wrap;font:13.5px/1.5 ui-monospace,Menlo,monospace;margin:8px 0 0;position:relative}
+  button.copy{position:absolute;top:8px;right:8px;background:var(--copper);color:var(--night);border:0;border-radius:6px;padding:4px 10px;font-weight:600;cursor:pointer}
+  button.copy:focus-visible{outline:3px solid var(--patina);outline-offset:2px}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid rgba(128,128,128,.25);vertical-align:top}
+  th{color:var(--muted)}
+  .bluf{font-size:18px}
+  .muted{color:var(--muted);font-size:14px}
+  footer{max-width:920px;margin:0 auto;padding:12px 20px 30px;color:var(--muted);font-size:13px}
+  @media (max-width:700px){.grid{grid-template-columns:1fr}header h1{font-size:23px}}
+  @media print{button.copy{display:none}body{font-size:13px}}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <h1>Paying down cognitive debt while you build</h1>
+  <p>CIS 591 class share, Module 1. How I let Claude Code build fast without falling behind on what it built.</p>
+</div></header>
+<main>
+
+<div class="card bluf">
+  <b>The idea in one line:</b> keep building in Claude Code, do your learning somewhere else, and at the end ask for one guide written about your own repo that you can keep and come back to.
+</div>
+
+<h2>1. The problem: cognitive debt</h2>
+<p>When Claude Code works, it moves faster than we can follow. It says "next/image", "commit", "remote", "CI", and the code runs whether or not we understood any of it. Each term we skip is a small loan against our understanding. That loan is <b>cognitive debt</b>: the gap between what the project does and what we can explain about it.</p>
+<p>Like any debt, a little is fine and lets you move fast. Left alone, it compounds. The day the professor asks "how does this work?", the whole bill comes due at once.</p>
+
+<h2>2. Two habits that keep the debt small</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Habit 1: give the teacher its own lane</h3>
+    <p>Everything you type in a build session becomes part of its working memory (its "context"). Long learning questions crowd out the task and can make the build worse.</p>
+    <p>My answer is a <b>tutor built into my system</b>: a short command for quick terms, and a separate teaching agent for deep lessons, so the build never loses its place.</p>
+    <p class="muted">No system yet? The professor's option works too: ask learning questions in the Chat tab.</p>
+  </div>
+  <div class="card teal">
+    <h3>Habit 2: make the decision consciously</h3>
+    <p>Ask yourself: do I need this now, or later?</p>
+    <ul>
+      <li><b>Now:</b> it blocks my next step, or my team is waiting. Ask in Chat, then return.</li>
+      <li><b>Later:</b> write the term down and keep building.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>3. My system: a tutor on call inside Claude Code</h2>
+<p>I never leave Claude Code to learn. I built the tutor into my setup as a <b>skill</b>, a saved instruction set Claude loads on command.</p>
+<ul>
+  <li><b>Quick term:</b> I type <code>/eli5</code> mid-build. It answers in the voice of a patient mentor I modeled on Marcus Aurelius: answer first, plain words, one analogy, then the real term. A few lines, and the build carries on.</li>
+  <li><b>Deep lesson:</b> I hand the teaching to a <b>separate agent</b> (a second AI worker with its own memory). It reads my repo and writes me a guide while my build session stays clean. That is how my master guide was made.</li>
+</ul>
+<p>You do not need my system to start. This prompt does the same job as the skill. Paste it into your session, or save it as your own skill later.</p>
+<pre id="p1"><button class="copy" data-t="p1">Copy</button>Be my tutor, in the spirit of Marcus Aurelius: calm, patient, plain-spoken, one idea at a time. I am learning software engineering and I am not a developer.
+Whenever I paste a term, an error, or a message from my coding agent:
+1. Answer in one plain sentence first.
+2. Explain it like I am five.
+3. Then give the proper technical term and a one-line definition I could say in class.
+4. Give one real-world analogy.
+5. Tell me why it matters for the project I am building, and whether I need it now or can learn it later.
+Stay under 150 words unless I ask for more.</pre>
+<p class="muted">To make it a skill: ask Claude Code to "save this prompt as a skill called eli5". Then <code>/eli5</code> works in every session.</p>
+
+<h2>4. The "explain my build" prompt (once, after the build works)</h2>
+<p>This is the deep-lesson half of my system. Run it <b>after</b> your tests pass. In my setup a separate teaching agent runs it; without one, open a <b>fresh</b> Claude Code session on your project folder. Either way it can read the whole repo, and your build session stays clean.</p>
+<pre id="p2"><button class="copy" data-t="p2">Copy</button>Read this repository, its git history, and specs/module-1 (spec, instructions, rubric).
+Do not change any code. Write me ONE self-contained HTML study guide, saved outside this repo, so I can explain this project in my own words.
+
+Write it in first person, as if I am explaining it. Use the proper technical terms, and define each one in plain English the first time it appears.
+
+Sections:
+1. What the assignment asked for, and what I built
+2. How the pieces connect: my laptop, Git, GitHub, Vercel, the browser (draw a simple diagram)
+3. The build step by step, using my real commit history
+4. Key concepts: repository, branch, commit, push and pull, local vs remote, pull request, merge, frontend vs backend. For each, give an engineer's version and a plain version with an analogy
+5. Why it was built this way (spec, catalog data, tests, no backend)
+6. Proof: real test results and my live links. Do not invent any result.
+7. A 30-second and a 2-minute way to explain it to my professor
+8. Five quiz questions with hidden answers
+
+Be honest about what I decided and what the AI did.</pre>
+<p class="muted">Tip: Module 1's tests run with <code>npm run check</code>. Run them yourself first, so the guide has real numbers to cite.</p>
+
+<h2>5. What it produced for me</h2>
+<table>
+  <tr><th>Part of the guide</th><th>What it did for me</th></tr>
+  <tr><td>System diagram</td><td>I can finally draw laptop to GitHub to Vercel from memory.</td></tr>
+  <tr><td>Concept cards</td><td>Commit, push, remote and merge each come with a plain version and an analogy.</td></tr>
+  <tr><td>Build timeline</td><td>Seven commits, one per section, so I can walk through exactly what changed.</td></tr>
+  <tr><td>Professor answers</td><td>A 30-second answer I can say without notes.</td></tr>
+  <tr><td>Quiz</td><td>Five questions that show me what I actually still do not know.</td></tr>
+</table>
+<p>The biggest surprise: it caught things I would have missed. For example, the starter's product documents disagree on privacy on purpose, and the spec says to follow the 2026 policy. The guide explained why that trap exists.</p>
+
+<h2>6. Keep it: save it as an artifact</h2>
+<ul>
+  <li>It is a single HTML file. Double-click it and it opens in any browser, no internet needed.</li>
+  <li>Keep it in a <code>learning-notes</code> folder <b>next to</b> your repo, not inside it, so it never gets deployed or graded by accident.</li>
+  <li>One guide per module. By the end of the term you have your own textbook, written about code you built.</li>
+</ul>
+
+<h2>7. The routine, start to finish</h2>
+<div class="card teal">
+  <ol>
+    <li><b>Build</b> in Claude Code: read the spec, plan, build, verify.</li>
+    <li><b>Ask</b> the tutor (<code>/eli5</code> or the prompt) the moment a term blocks you. Park the rest in a note.</li>
+    <li><b>Ship</b> when <code>npm run check</code> passes and the site is live.</li>
+    <li><b>Explain</b>: run the "explain my build" prompt in a fresh session.</li>
+    <li><b>Test yourself</b>: take the quiz, and re-ask Chat about anything you miss.</li>
+  </ol>
+</div>
+
+</main>
+<footer>Shared by Luis Vega for CIS 591. Copper State Labs is fictional, for educational use. Prompts are free to copy and adapt.</footer>
+<script>
+document.querySelectorAll('button.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.t).innerText.replace(/^Copy\n?/,'');
+    try{navigator.clipboard.writeText(t);b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500);}catch(e){}
+  });
+});
+</script>
+</body>
+</html>

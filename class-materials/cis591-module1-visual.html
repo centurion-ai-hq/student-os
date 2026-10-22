@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIS 591 Modules 0 and 1, Visual Guide</title>
+<style>
+:root{
+  --bg:#f7f1e6; --panel:#EFE3D0; --card:#fffaf0; --ink:#1C2333; --muted:#4a5163; --line:#d6c7ae;
+  --copper:#B87333; --copper-text:#8a5220; --night:#1C2333; --sand:#EFE3D0;
+  --patina:#4A8C82; --patina-bg:#dcebe7; --patina-ink:#1f4f48; --yellow:#F2C230; --focus:#1a5fb4;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#11151f; --panel:#1C2333; --card:#171d2b; --ink:#efe6d6; --muted:#b7b9c4; --line:#34405a;
+    --copper-text:#e0a56a; --patina-bg:#1d3a37; --patina-ink:#bfe3dc; --focus:#8ab8ff;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
+a{color:var(--copper-text);font-weight:600}
+a:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:3px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:var(--panel);padding:1px 5px;border-radius:4px;word-break:break-word}
+h1,h2,h3{margin:0;line-height:1.15}
+p{margin:0}
+
+.page{max-width:1100px;margin:0 auto;padding:26px 16px 30px;border-bottom:6px solid var(--copper)}
+.page:last-child{border-bottom:0}
+.ph{display:flex;align-items:baseline;gap:14px;border-bottom:4px solid var(--copper);padding-bottom:8px;margin-bottom:16px}
+.pn{flex:none;background:var(--night);color:var(--sand);font-weight:700;font-size:.85rem;padding:3px 10px;border-radius:4px}
+.pt{font-size:clamp(1.9rem,5.5vw,2.9rem);font-weight:800;letter-spacing:-.01em}
+.kick{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--copper-text);font-weight:700;margin-bottom:4px}
+.cap{color:var(--muted);font-size:.95rem;margin:8px 0 14px}
+.sub{font-size:1.1rem;margin:20px 0 8px;color:var(--copper-text)}
+
+.bluf{background:var(--night);color:var(--sand);border-left:8px solid var(--copper);border-radius:8px;padding:16px 20px;font-size:1.25rem;line-height:1.35;font-weight:600}
+
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.chip{background:var(--panel);border:1px solid var(--line);border-left:6px solid var(--patina);border-radius:6px;padding:10px 12px}
+.chip b{display:block;font-size:1.9rem;line-height:1.1}
+.chip span{font-size:.85rem;color:var(--muted)}
+.chip.live{border-left-color:var(--copper)}
+
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.prod{background:var(--patina-bg);color:var(--patina-ink);border-radius:8px;padding:10px 12px;border-top:4px solid var(--patina)}
+.prod b{display:block;font-size:1.05rem}
+
+table{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--night);color:var(--sand);font-size:.82rem;letter-spacing:.03em}
+tbody tr:nth-child(even) td{background:var(--panel)}
+td:first-child{font-weight:700}
+.ok{color:var(--patina-ink);font-weight:700}
+@media (prefers-color-scheme: dark){ .ok{color:#8fd19e} }
+
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px}
+figure svg{display:block;width:100%;height:auto;margin:0 auto}
+.narrow{display:none}
+svg text{fill:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+svg .t{font-size:19px;font-weight:700}
+svg .s{font-size:14px}
+svg .l{font-size:15px;font-weight:700}
+svg .box{fill:var(--panel);stroke:var(--copper);stroke-width:3}
+svg .box2{fill:var(--patina-bg);stroke:var(--patina);stroke-width:3}
+svg .zone{fill:none;stroke:var(--muted);stroke-width:2.5;stroke-dasharray:9 7}
+svg .push{stroke:var(--copper);stroke-width:4;fill:none}
+svg .pull{stroke:var(--patina);stroke-width:4;fill:none}
+svg .ah{fill:var(--copper)}
+svg .ah2{fill:var(--patina)}
+svg .lblc{fill:var(--copper-text);font-size:15px;font-weight:700}
+svg .lblp{fill:var(--patina-ink);font-size:15px;font-weight:700}
+@media (prefers-color-scheme: dark){svg .lblp{fill:#bfe3dc}}
+
+.loop{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:6px}
+.step{position:relative;background:var(--card);border:2px solid var(--copper);border-radius:10px;padding:12px 10px 10px;margin-right:22px;text-align:center}
+.step:last-child{margin-right:0}
+.step:not(:last-child)::after{content:"";position:absolute;right:-20px;top:50%;margin-top:-9px;border-left:16px solid var(--copper);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.step .n{display:inline-block;width:30px;height:30px;line-height:30px;border-radius:50%;background:var(--copper);color:#1C2333;font-weight:800;margin-bottom:4px}
+.step b{display:block;font-size:1.05rem;letter-spacing:.03em}
+.step span{font-size:.85rem;color:var(--muted);display:block;margin-top:2px}
+
+ol.tl{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(9,1fr);gap:0;position:relative}
+ol.tl::before{content:"";position:absolute;left:5%;right:5%;top:11px;height:4px;background:var(--copper)}
+ol.tl li{position:relative;text-align:center;padding:30px 4px 0}
+ol.tl li::before{content:"";position:absolute;left:50%;top:4px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--copper);border:3px solid var(--bg)}
+ol.tl li.fix::before{background:var(--yellow)}
+ol.tl code{display:inline-block;font-size:.8rem;margin-bottom:3px}
+ol.tl b{display:block;font-size:.9rem}
+ol.tl span{display:block;font-size:.78rem;color:var(--muted);margin-top:2px}
+.base{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 10px;font-size:.88rem;margin-bottom:6px}
+
+.say{background:var(--night);color:var(--sand);border-left:8px solid var(--yellow);border-radius:8px;padding:14px 20px;font-size:1.05rem;line-height:1.45;margin:16px 0}
+.say b{display:block;color:var(--yellow);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.two table{margin:0}
+td ul{margin:0;padding-left:1.1em}
+td li{margin:0}
+
+@media (max-width:640px){
+  body{font-size:15px}
+  .strip{grid-template-columns:1fr 1fr}
+  .prods{grid-template-columns:1fr}
+  .wide{display:none}
+  .narrow{display:block}
+  .loop{grid-template-columns:1fr;gap:20px}
+  .step{margin-right:0;text-align:left;padding-left:48px}
+  .step .n{position:absolute;left:10px;top:10px}
+  .step:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-19px;margin-top:0;margin-left:-9px;border-left:9px solid transparent;border-right:9px solid transparent;border-top:12px solid var(--copper);border-bottom:0}
+  ol.tl{grid-template-columns:1fr;border-left:4px solid var(--copper);margin-left:10px}
+  ol.tl::before{display:none}
+  ol.tl li{text-align:left;padding:0 0 12px 22px}
+  ol.tl li::before{left:-11px;top:2px;margin-left:0}
+  .two{grid-template-columns:1fr}
+  table.rs thead{display:none}
+  table.rs,table.rs tbody,table.rs tr,table.rs td{display:block;width:100%}
+  table.rs tr{margin-bottom:10px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  table.rs td{border:0;border-bottom:1px solid var(--line)}
+  table.rs td::before{content:attr(data-label);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+}
+
+@page{size:letter;margin:.4in}
+@media print{
+  body{background:#fff;color:#000;font-size:10pt}
+  .page{page-break-before:always;break-before:page;max-width:none;padding:0 0 0;border-bottom:0;page-break-inside:avoid;break-inside:avoid}
+  .page:first-child{page-break-before:auto;break-before:auto}
+  .pt{font-size:26pt}
+  .bluf{font-size:13pt}
+  .chip b{font-size:18pt}
+  table{font-size:8.5pt}
+  th,td{padding:4px 6px}
+  .loop .step{padding:8px 4px}
+  figure,table,.step,.say,.prod{page-break-inside:avoid;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<section class="page" id="p1" aria-labelledby="h1">
+  <div class="kick">CIS 591 Modules 0 and 1, my study guide</div>
+  <div class="ph"><span class="pn">1 / 5</span><h1 class="pt" id="h1">What I built</h1></div>
+
+  <div class="bluf">I built the Copper State Labs website, directed Claude Code to write it, and the class checker passes it 12 of 12. Both modules are live.</div>
+
+  <div class="strip">
+    <div class="chip"><b>2 of 2</b><span>Module 0 criteria, 15 of 15 points</span></div>
+    <div class="chip"><b>12 of 12</b><span>Module 1 criteria, 75 of 75 points</span></div>
+    <div class="chip live"><b>Live</b><span>Module 0 on Vercel</span></div>
+    <div class="chip live"><b>Live</b><span>Module 1 on Vercel</span></div>
+  </div>
+
+  <h3 class="sub">The company I built the site for</h3>
+  <div class="prods">
+    <div class="prod"><b>Copper Home AI</b>Smart speaker</div>
+    <div class="prod"><b>Copper Notes AI</b>Clip-on recorder</div>
+    <div class="prod"><b>Copper Plus</b>Subscription</div>
+  </div>
+
+  <h3 class="sub">The task, one row per module</h3>
+  <table class="rs">
+    <thead><tr><th>Module</th><th>The starter gave me</th><th>I added</th><th>How it was graded</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Module">Module 0</td><td data-label="Starter gave me">A starter app on the module-0 branch</td><td data-label="I added">One check-in sentence in <code>app/page.tsx</code></td><td data-label="Graded">Checker went 1 of 2 to 2 of 2; 15 of 15 test points</td></tr>
+      <tr><td data-label="Module">Module 1</td><td data-label="Starter gave me">A spec, the checker and image assets; score 0 of 12</td><td data-label="I added">Seven page sections, brand color tokens, one price catalog</td><td data-label="Graded">100 points: 75 automated, 10 design (TA), 15 deploy</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Where to see it</h3>
+  <table class="rs">
+    <thead><tr><th>Module</th><th>Live site</th><th>Repository</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Module">Module 0</td><td data-label="Live site"><a href="https://copper-m0-inky.vercel.app">https://copper-m0-inky.vercel.app</a></td><td data-label="Repository"><a href="https://github.com/lavega13-cmd/copper-m0">github.com/lavega13-cmd/copper-m0</a></td></tr>
+      <tr><td data-label="Module">Module 1</td><td data-label="Live site"><a href="https://copper-m1-liart.vercel.app">https://copper-m1-liart.vercel.app</a></td><td data-label="Repository"><a href="https://github.com/lavega13-cmd/copper-m1">github.com/lavega13-cmd/copper-m1</a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="p2" aria-labelledby="h2">
+  <div class="ph"><span class="pn">2 / 5</span><h2 class="pt" id="h2">How it fits together</h2></div>
+
+  <figure>
+    <svg class="wide" viewBox="0 0 1000 250" role="img" aria-labelledby="a1t a1d">
+      <title id="a1t">System architecture</title>
+      <desc id="a1d">Laptop with Claude Code, then local Git, then GitHub, then Vercel, then the visitor's browser. A dashed box notes frontend only.</desc>
+      <defs><marker id="m1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker></defs>
+      <rect class="box" x="0" y="10" width="148" height="130" rx="10"/>
+      <text class="t" x="12" y="42">Laptop</text><text class="t" x="12" y="64">+ Claude Code</text>
+      <text class="s" x="12" y="92">I direct,</text><text class="s" x="12" y="110">agents code</text>
+      <path class="push" d="M150,75 L211,75" marker-end="url(#m1)"/><text class="lblc" x="181" y="62" text-anchor="middle">commit</text>
+      <rect class="box" x="213" y="10" width="148" height="130" rx="10"/>
+      <text class="t" x="225" y="42">Local Git</text>
+      <text class="s" x="225" y="72">Every change is</text><text class="s" x="225" y="90">a numbered</text><text class="s" x="225" y="108">commit</text>
+      <path class="push" d="M363,75 L424,75" marker-end="url(#m1)"/><text class="lblc" x="394" y="62" text-anchor="middle">push</text>
+      <rect class="box" x="426" y="10" width="148" height="130" rx="10"/>
+      <text class="t" x="438" y="42">GitHub</text><text class="s" x="438" y="64">remote (origin)</text>
+      <text class="s" x="438" y="92">The online copy,</text><text class="s" x="438" y="110">source of truth</text>
+      <path class="push" d="M576,75 L637,75" marker-end="url(#m1)"/><text class="lblc" x="607" y="62" text-anchor="middle">import</text>
+      <rect class="box" x="639" y="10" width="148" height="130" rx="10"/>
+      <text class="t" x="651" y="42">Vercel</text>
+      <text class="s" x="651" y="72">Builds the site</text><text class="s" x="651" y="90">and hosts it</text><text class="s" x="651" y="108">on the web</text>
+      <path class="push" d="M789,75 L850,75" marker-end="url(#m1)"/><text class="lblc" x="820" y="62" text-anchor="middle">visit</text>
+      <rect class="box2" x="852" y="10" width="148" height="130" rx="10"/>
+      <text class="t" x="864" y="42">Browser</text>
+      <text class="s" x="864" y="72">A visitor sees</text><text class="s" x="864" y="90">the live page</text>
+      <rect class="zone" x="0" y="165" width="1000" height="70" rx="10"/>
+      <text class="l" x="16" y="195">FRONTEND ONLY</text>
+      <text class="s" x="16" y="217">No backend, no database, no logins. Prices live in one file: lib/copper/catalog.ts</text>
+    </svg>
+    <svg class="narrow" viewBox="0 0 360 560" role="img" aria-labelledby="a2t a2d">
+      <title id="a2t">System architecture</title>
+      <desc id="a2d">Laptop with Claude Code, local Git, GitHub, Vercel, visitor browser, top to bottom. Frontend only.</desc>
+      <defs><marker id="m2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker></defs>
+      <rect class="box" x="10" y="6" width="340" height="56" rx="8"/><text class="t" x="24" y="30">Laptop + Claude Code</text><text class="s" x="24" y="50">I direct, agents code</text>
+      <path class="push" d="M180,64 L180,92" marker-end="url(#m2)"/><text class="lblc" x="194" y="84">commit</text>
+      <rect class="box" x="10" y="94" width="340" height="56" rx="8"/><text class="t" x="24" y="118">Local Git</text><text class="s" x="24" y="138">Every change is a numbered commit</text>
+      <path class="push" d="M180,152 L180,180" marker-end="url(#m2)"/><text class="lblc" x="194" y="172">push</text>
+      <rect class="box" x="10" y="182" width="340" height="56" rx="8"/><text class="t" x="24" y="206">GitHub: remote (origin)</text><text class="s" x="24" y="226">The online copy, source of truth</text>
+      <path class="push" d="M180,240 L180,268" marker-end="url(#m2)"/><text class="lblc" x="194" y="260">import</text>
+      <rect class="box" x="10" y="270" width="340" height="56" rx="8"/><text class="t" x="24" y="294">Vercel</text><text class="s" x="24" y="314">Builds the site and hosts it</text>
+      <path class="push" d="M180,328 L180,356" marker-end="url(#m2)"/><text class="lblc" x="194" y="348">visit</text>
+      <rect class="box2" x="10" y="358" width="340" height="56" rx="8"/><text class="t" x="24" y="382">Visitor's browser</text><text class="s" x="24" y="402">Sees the live page</text>
+      <rect class="zone" x="10" y="436" width="340" height="110" rx="8"/>
+      <text class="l" x="24" y="466">FRONTEND ONLY</text>
+      <text class="s" x="24" y="490">No backend, no database, no logins.</text>
+      <text class="s" x="24" y="512">Prices live in one file:</text>
+      <text class="s" x="24" y="532">lib/copper/catalog.ts</text>
+    </svg>
+  </figure>
+  <p class="cap">The class slide shows four stops. I added the local Git stop and the visitor, because that is where the learning is.</p>
+
+  <h3 class="sub">My loop: spec-driven development</h3>
+  <div class="loop">
+    <div class="step"><span class="n">1</span><b>READ</b><span>The spec; baseline 0 of 12</span></div>
+    <div class="step"><span class="n">2</span><b>PLAN</b><span>Opus 5.5 sets the design direction</span></div>
+    <div class="step"><span class="n">3</span><b>BUILD</b><span>Sonnet 5.5, one section per commit</span></div>
+    <div class="step"><span class="n">4</span><b>VERIFY</b><span>Checker, tests, real browser</span></div>
+    <div class="step"><span class="n">5</span><b>IMPROVE + SAVE</b><span>One design fix, then push</span></div>
+  </div>
+  <p class="cap">Done means it matches the spec, not just that the site looks finished.</p>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="p3" aria-labelledby="h3">
+  <div class="ph"><span class="pn">3 / 5</span><h2 class="pt" id="h3">How I built it</h2></div>
+
+  <span class="base">Baseline before any work: 0 of 12</span>
+  <ol class="tl" aria-label="Commit timeline">
+    <li><code>c88184b</code><b>assets</b><span>moved to public; 1 of 12</span></li>
+    <li><code>00bc4b5</code><b>header</b></li>
+    <li><code>b870365</code><b>hero</b></li>
+    <li><code>e652e6f</code><b>products</b></li>
+    <li><code>40d3da0</code><b>showcase</b></li>
+    <li><code>1a78c3b</code><b>plus-pricing</b></li>
+    <li><code>3526337</code><b>privacy</b></li>
+    <li><code>527b70a</code><b>footer</b></li>
+    <li class="fix"><code>f92eabe</code><b>design fix</b><span>cards 900 to 669 px</span></li>
+  </ol>
+  <p class="cap">Nine checkpoints, each a commit I can return to. A SHA is the short fingerprint git gives a commit.</p>
+
+  <h3 class="sub">The page, section by section</h3>
+  <table class="rs">
+    <thead><tr><th>Section</th><th>Id and data source</th><th>What it shows</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Section">1. Header</td><td data-label="Id and data source"><code>site-header</code></td><td data-label="What it shows">Sticky bar: logo, links to Products, Copper Plus, Privacy, dark mode toggle</td></tr>
+      <tr><td data-label="Section">2. Hero</td><td data-label="Id and data source"><code>hero</code></td><td data-label="What it shows">The only h1: "Two smart companions, forged in the desert."</td></tr>
+      <tr><td data-label="Section">3. Products</td><td data-label="Id and data source"><code>products</code>, <code>getProducts()</code></td><td data-label="What it shows">Three product cards with prices from the catalog</td></tr>
+      <tr><td data-label="Section">4. Showcase</td><td data-label="Id and data source"><code>showcase</code></td><td data-label="What it shows">Three lifestyle photos in alternating rows, each with a one-line caption</td></tr>
+      <tr><td data-label="Section">5. Plus pricing</td><td data-label="Id and data source"><code>plus-pricing</code>, <code>getPlans()</code></td><td data-label="What it shows">Copper Plus plan details and prices</td></tr>
+      <tr><td data-label="Section">6. Privacy</td><td data-label="Id and data source"><code>privacy</code>, <code>getPrivacySummary()</code></td><td data-label="What it shows">Nothing goes to the cloud until "Hey Copper"; saved 30 days Free, 12 months Plus</td></tr>
+      <tr><td data-label="Section">7. Footer</td><td data-label="Id and data source"><code>site-footer</code></td><td data-label="What it shows">Night Sky band: logo and "Fictional, for educational use."</td></tr>
+    </tbody>
+  </table>
+  <p class="cap">Setup note: GitHub returned HTTP 401 until I unset a stale <code>GITHUB_TOKEN</code>. An environment variable outranks the saved login.</p>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" id="p4" aria-labelledby="h4">
+  <div class="ph"><span class="pn">4 / 5</span><h2 class="pt" id="h4">The concepts</h2></div>
+
+  <table class="rs">
+    <thead><tr><th>Term</th><th>Plain version</th><th>Analogy</th><th>Engineer's version</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Term">Repository</td><td data-label="Plain version">A project folder that carries its own history</td><td data-label="Analogy">The operations binder</td><td data-label="Engineer's version">A git-tracked directory plus a hidden <code>.git</code> database</td></tr>
+      <tr><td data-label="Term">Branch</td><td data-label="Plain version">A parallel line of work; main stays untouched</td><td data-label="Analogy">Sand table rehearsal</td><td data-label="Engineer's version">A movable pointer to a commit</td></tr>
+      <tr><td data-label="Term">Commit</td><td data-label="Plain version">A permanent labeled snapshot</td><td data-label="Analogy">A signed duty log entry</td><td data-label="Engineer's version">An immutable object: tree, parent, author, message, SHA</td></tr>
+      <tr><td data-label="Term">Push / pull</td><td data-label="Plain version">Push sends mine up; pull brings theirs down</td><td data-label="Analogy">Radio my log up to headquarters</td><td data-label="Engineer's version">Upload to a remote branch; fetch and integrate</td></tr>
+      <tr><td data-label="Term">Local vs remote</td><td data-label="Plain version">My copy versus the shared, backed-up copy</td><td data-label="Analogy">My ruck versus HQ master files</td><td data-label="Engineer's version">A full clone versus a named remote, <code>origin</code></td></tr>
+      <tr><td data-label="Term">Pull request</td><td data-label="Plain version">A request to combine branches after review (I pushed to main solo)</td><td data-label="Analogy">Staff review before the commander signs</td><td data-label="Engineer's version">A hosted merge request with a diff and required checks</td></tr>
+      <tr><td data-label="Term">Merge</td><td data-label="Plain version">Joins two lines of work into one</td><td data-label="Analogy">An approved amendment folded into the order</td><td data-label="Engineer's version">Integrates histories and flags conflicts</td></tr>
+      <tr><td data-label="Term">Frontend vs backend</td><td data-label="Plain version">What the visitor sees versus the server that stores data</td><td data-label="Analogy">Shop window versus stockroom</td><td data-label="Engineer's version">Client renders UI; server owns persistence and auth</td></tr>
+      <tr><td data-label="Term">CI</td><td data-label="Plain version">A robot that reruns the checks on every push</td><td data-label="Analogy">A second inspector on every load-out</td><td data-label="Engineer's version">GitHub Actions; both repos show a green run</td></tr>
+      <tr><td data-label="Term">Acceptance test</td><td data-label="Plain version">A pass or fail check for one requirement</td><td data-label="Analogy">The end state in an operations order</td><td data-label="Engineer's version">Automated test per criterion, run by <code>npm run check</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Git workflow</h3>
+  <figure>
+    <svg viewBox="0 0 1010 210" role="img" aria-labelledby="g1t g1d">
+      <title id="g1t">Git workflow</title>
+      <desc id="g1d">Working files, add to staging, commit to local repository, push to GitHub, pull back.</desc>
+      <defs>
+        <marker id="g1a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+        <marker id="g1b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah2"/></marker>
+      </defs>
+      <rect class="zone" x="8" y="8" width="734" height="150" rx="12"/>
+      <text class="l" x="22" y="28">MY LAPTOP (local)</text>
+      <rect class="box" x="20" y="40" width="190" height="90" rx="10"/><text class="t" x="34" y="78">Working files</text><text class="s" x="34" y="104">What I or the agent edit</text>
+      <path class="push" d="M212,85 L278,85" marker-end="url(#g1a)"/><text class="lblc" x="245" y="74" text-anchor="middle">add</text>
+      <rect class="box" x="280" y="40" width="190" height="90" rx="10"/><text class="t" x="294" y="78">Staging area</text><text class="s" x="294" y="104">Pick the next snapshot</text>
+      <path class="push" d="M472,85 L538,85" marker-end="url(#g1a)"/><text class="lblc" x="505" y="74" text-anchor="middle">commit</text>
+      <rect class="box" x="540" y="40" width="190" height="90" rx="10"/><text class="t" x="554" y="78">Local repository</text><text class="s" x="554" y="104">Commits, each with a SHA</text>
+      <path class="push" d="M732,85 L798,85" marker-end="url(#g1a)"/><text class="lblc" x="765" y="74" text-anchor="middle">push</text>
+      <rect class="box2" x="800" y="40" width="190" height="90" rx="10"/><text class="t" x="814" y="78">GitHub (origin)</text><text class="s" x="814" y="104">Online copy for Vercel</text>
+      <path class="pull" d="M895,132 L895,190 L635,190 L635,134" marker-end="url(#g1b)"/><text class="lblp" x="765" y="181" text-anchor="middle">pull</text>
+    </svg>
+  </figure>
+  <p class="cap">The staging area lets one commit hold exactly one idea.</p>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="p5" aria-labelledby="h5">
+  <div class="ph"><span class="pn">5 / 5</span><h2 class="pt" id="h5">Proof and how I explain it</h2></div>
+
+  <div class="two">
+    <table class="rs">
+      <thead><tr><th>Check</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Check">npm run check</td><td data-label="Result"><span class="ok">12 of 12 criteria, 75 of 75 points</span></td></tr>
+        <tr><td data-label="Check">npm test</td><td data-label="Result"><span class="ok">141 passed, 0 failed</span> (10 skipped)</td></tr>
+        <tr><td data-label="Check">Lint, typecheck, build</td><td data-label="Result"><span class="ok">All pass</span></td></tr>
+        <tr><td data-label="Check">CI on GitHub</td><td data-label="Result"><span class="ok">Green</span> on both repos</td></tr>
+        <tr><td data-label="Check">Widths 1280, 768, 375</td><td data-label="Result"><span class="ok">Verified</span>, no horizontal scroll</td></tr>
+      </tbody>
+    </table>
+    <table class="rs">
+      <thead><tr><th>I decided</th><th>Claude Code executed</th></tr></thead>
+      <tbody>
+        <tr><td data-label="I decided"><ul><li>Which model did which job</li><li>The design direction and headline</li><li>My check-in sentence</li><li>Creating the repos, the push, the deploy</li></ul></td><td data-label="Claude Code executed" style="font-weight:400"><ul><li>Sonnet 5.5: built seven sections, ran setup</li><li>Opus 5.5: set the direction</li><li>Opus 5.5: reviewed at three widths</li><li>Opus 5.5: made the one design fix</li></ul></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub">The three traps the spec set</h3>
+  <table class="rs">
+    <thead><tr><th>Trap</th><th>How I handled it</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Trap">Typed prices vs the catalog</td><td data-label="How I handled it">Every price and plan comes from <code>lib/copper/catalog.ts</code>. The grader swaps prices to prove nothing is typed.</td></tr>
+      <tr><td data-label="Trap">"Never records" privacy conflict</td><td data-label="How I handled it">Older documents conflict. I followed the 2026 policy and never claim "never records."</td></tr>
+      <tr><td data-label="Trap">Off-brand colors</td><td data-label="How I handled it">Six brand colors as named tokens in <code>app/globals.css</code>; test AC-4.1 rejects any other hex.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="say">
+    <b>How I'd explain it in 30 seconds</b>
+    "I built the Copper State Labs site using the instructor's spec as the definition of done. I directed Claude Code to build it one section at a time, one commit each. The checker shows 12 of 12 and 75 of 75, I checked the design in a real browser at phone, tablet and desktop widths, and both sites are live on Vercel."
+  </div>
+  <p class="cap">I am a founder directing builders, not a programmer: I wrote the instructions, made the calls, and verified the result.</p>
+</section>
+
+</body>
+</html>
