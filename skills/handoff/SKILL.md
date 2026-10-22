@@ -9,8 +9,8 @@ argument-hint: "[optional: anything you want to make sure is remembered]"
 A fresh session costs far less than a long one, and a long chat forgets things. This skill saves your place so nothing you asked for gets lost. Think of a nurse handing a patient to the next shift: say what happened, what is next, and then check the next person understood.
 
 ## Output rule
-• Chat replies stay short. The main product is one small file, `NEXT-STEPS.md`, in the project root (replace the old one).
-• Any longer explanation (for example a big ledger) goes in ONE self-contained HTML file in a `learning-notes` folder next to the project, never inside a repo. Bottom line first, tables, works offline, light and dark mode, phone friendly, no em dashes. Tell the student the path.
+• Chat replies stay short. The main product is one small file, `NEXT-STEPS.md`, in `~/learning-notes/<project-folder-name>/` (outside your project, so it can never be submitted by accident; replace the old one).
+• Any longer explanation (for example a big ledger) goes in ONE self-contained HTML file in `~/learning-notes`, never inside a repo. Bottom line first, tables, works offline, light and dark mode, phone friendly, no em dashes. Tell the student the path.
 
 ## Model routing
 • You (Sonnet) do the freeze, the ledger, and the writing.
@@ -60,11 +60,11 @@ Branch main, 2 files uncommitted, last commit "add nav"
 | 1 | "add a nav bar" | Done | index.html line 12 |
 | 2 | "make it dark" | Dropped | I changed my mind |
 ```
-5. **Verify with a fresh helper.** Spawn ONE helper (`model: haiku`) with this brief and nothing else: "Read NEXT-STEPS.md. For every item under Done and every Done row in the ledger, check it against the actual project files and by running its proof command if one is given (read-only commands only). Report one line each: PASS, FAIL, or UNSURE, with the evidence (file and line, or command output)." Do not tell it your reasoning.
+5. **Verify with a fresh helper.** Spawn ONE helper (`model: haiku`) with this brief and nothing else: "Read the NEXT-STEPS.md you just wrote. For every item under Done and every Done row in the ledger, check it against the actual project files and by running its proof command if one is given (read-only commands only). Report one line each: PASS, FAIL, or UNSURE, with the evidence (file and line, or command output)." Do not tell it your reasoning.
 6. **Apply the verdict.** Any FAIL moves the item to Not done and the file is corrected. UNSURE stays Not done unless you can prove it. Never mark an item verified that the helper did not report PASS on. Add one line at the top of the file: `Verified [date]: X pass, Y fail, Z unsure.`
 7. **Give the resume line.** Tell the student the file path, then give this exact line to paste into a new session:
 
-`Read NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`
+`Read ~/learning-notes/<project-folder-name>/NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`
 
 ## Traps this skill exists to catch
 (Read these before step 3; they are where handoffs usually fail.)
@@ -75,7 +75,7 @@ Branch main, 2 files uncommitted, last commit "add nav"
 • A resume line that is vague. The new session knows nothing, so the first message must point at the file.
 
 ## Rules
-• Do NOT commit `NEXT-STEPS.md`. It is for you, not for your submission. Do not add it to git or edit any other file, including `.gitignore`. If `git status` later shows it untracked, leave it alone and tell the student.
+• Never copy `NEXT-STEPS.md` into the project and never commit or push anything. It lives outside the project on purpose. Do not edit any other file, including `.gitignore`.
 • Only list something as Done if it is proved. "I think it works" is Not done.
 • Never put passwords, keys, or tokens in the file.
 • Never delete or rewrite the old handoff before the new one is verified. Rename it `NEXT-STEPS.old.md` first if unsure.
@@ -85,6 +85,6 @@ Branch main, 2 files uncommitted, last commit "add nav"
 ## Example
 Student: "my hands are cramping, save my place"
 
-Handoff (chat): "Freeze: building the contact form, last done was the nav bar, next was form validation. Git: branch main, 2 files changed and uncommitted, last commit 'add nav'. I found 5 asks this session: 3 done, 1 not done, 1 dropped (you dropped the dark theme). The helper checked the 3 done items: 2 PASS, 1 FAIL (the footer link is missing in index.html), so I moved it to Not done. File: NEXT-STEPS.md in your project folder. Paste this in a new session:"
+Handoff (chat): "Freeze: building the contact form, last done was the nav bar, next was form validation. Git: branch main, 2 files changed and uncommitted, last commit 'add nav'. I found 5 asks this session: 3 done, 1 not done, 1 dropped (you dropped the dark theme). The helper checked the 3 done items: 2 PASS, 1 FAIL (the footer link is missing in index.html), so I moved it to Not done. File: ~/learning-notes/contact-form/NEXT-STEPS.md. Paste this in a new session:"
 
-`Read NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`
+`Read ~/learning-notes/contact-form/NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`

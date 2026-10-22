@@ -14,7 +14,7 @@ New words, defined once: an assumption is something your plan needs to be true b
 
 • Short answers stay in chat.
 
-• Longer than about 15 lines? Write ONE self-contained HTML file in a `learning-notes` folder next to the current project (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
+• Longer than about 15 lines? Write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
 
 • Then tell the student the file path.
 
@@ -24,7 +24,7 @@ New words, defined once: an assumption is something your plan needs to be true b
 
 • Reading files, searching the project, or listing what exists goes to ONE helper subagent with `model: haiku`. Never more than one helper per run. Never loop.
 
-• The final verdict (step 6) is the only step that may use Opus. Ask first, in one line: "Want the final verdict on Opus? It uses more of your plan." Switch only on a yes. On a no, give the verdict on Sonnet and say so.
+• The final verdict (step 6) is the only step that may use Opus. Ask first, in one line: "Want the final verdict on Opus? It uses more of your plan." On a yes, tell the student to type `/model opus`, and `/model sonnet` when done (you cannot switch models yourself). On a no, give the verdict on Sonnet and say so.
 
 ## Steps
 

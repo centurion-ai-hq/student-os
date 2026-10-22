@@ -10,7 +10,7 @@ The Pro plan gives you a limited amount of work per few hours. A token is a smal
 
 ## Output rule
 • Reply in chat, under 12 lines.
-• If you need more than about 15 lines, write ONE self-contained HTML file in a `learning-notes` folder next to the project (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
+• If you need more than about 15 lines, write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
 
 ## Model routing
 • This skill itself runs on Sonnet. It needs no helper and no Opus.

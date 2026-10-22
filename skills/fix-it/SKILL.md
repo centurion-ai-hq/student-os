@@ -13,7 +13,7 @@ New words, defined once: a blast radius is everything one change could affect. A
 ## Output rule
 • Short answers stay in chat.
 
-• Longer than about 15 lines? Write ONE self-contained HTML file in a `learning-notes` folder next to the current project (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
+• Longer than about 15 lines? Write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
 
 • Then tell the student the file path. The bug note (step 7) always goes there, as a short HTML file or a short chat block if it fits in 15 lines.
 
@@ -27,7 +27,7 @@ New words, defined once: a blast radius is everything one change could affect. A
 • Opus is not needed for this skill.
 
 ## Steps
-1. **Capture the whole error.** Run the failing command and save the complete output to a file in the scratchpad or a temp spot outside the repo. Read ALL of it, top to bottom. The reason for a failure is usually at the top and the repeated symptoms pile up under it, so never cut it with `tail` and never judge from the last line alone. Quote the exact error text back to the student before saying what it means. If a theory pops into your head first, write it down and set it aside; it is a hypothesis, not a finding.
+1. **Capture the whole error.** Run the failing command and save the complete output to a temp file outside your project. Read ALL of it, top to bottom. The reason for a failure is usually at the top and the repeated symptoms pile up under it, so never cut it with `tail` and never judge from the last line alone. Quote the exact error text back to the student before saying what it means. If a theory pops into your head first, write it down and set it aside; it is a hypothesis, not a finding.
 
 2. **Make it fail again.** Reproduce it. If you cannot make it fail twice, the status is BLOCKED: tell the student what you tried and stop. Fixing something you cannot reproduce is guessing.
 

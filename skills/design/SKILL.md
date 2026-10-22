@@ -12,13 +12,13 @@ New words, defined once: a token is a named value you reuse (like a color called
 
 ## Output rule
 • Short answers stay in chat.
-• Longer than about 15 lines? Write ONE self-contained HTML file in a `learning-notes` folder next to the current project (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
+• Longer than about 15 lines? Write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
 • Then tell the student the file path. The page being DESIGNED goes where the project needs it; only the design brief and check report go in `learning-notes`.
 
 ## Model routing
 • Design and building stay on Sonnet.
 • Finding existing files, reading the current CSS, or listing assets goes to ONE helper subagent with `model: haiku`.
-• The width check (step 6) may use a SEPARATE fresh helper with `model: haiku` that did not build the page. It opens the page, looks, and reports PASS, FAIL, or UNSURE per width, with what it saw. Max 1 helper per run. Never loop or fan out.
+• The width check (step 6) may use a SEPARATE fresh helper with `model: haiku` that did not build the page. It opens the page, looks, and reports PASS, FAIL, or UNSURE per width, with what it saw. One helper at a time, never in parallel. Never loop or fan out.
 • Opus is only worth it for a big redesign direction call; if you want it, ask first and say "it uses more of your plan." Default: do not use it.
 
 ## Rule priority (when two rules clash, the lower number wins)

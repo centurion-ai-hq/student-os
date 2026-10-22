@@ -10,7 +10,7 @@ A skill is a plain text file of instructions that Claude loads when you ask for 
 
 ## Output rule
 • Short answers stay in chat.
-• Anything longer than about 15 lines (for example a full review of an existing skill) goes into ONE self-contained HTML file in a `learning-notes` folder next to the project (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
+• Anything longer than about 15 lines (for example a full review of an existing skill) goes into ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
 • The new skill file itself is the deliverable. Do not paste all of it into chat; show a 3-line summary.
 
 ## Model routing

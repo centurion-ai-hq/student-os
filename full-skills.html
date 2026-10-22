@@ -7,7 +7,7 @@ details{background:var(--card);border:1px solid var(--line);border-radius:8px;ma
 pre{white-space:pre-wrap;font-size:12px;overflow-x:auto}.copy{margin:6px 0;padding:6px 12px;border-radius:6px;border:1px solid var(--accent);background:transparent;color:var(--ink);cursor:pointer}
 </style></head><body><main><h1>Student OS: the full text of every skill</h1>
 <p class="bottom">Open a skill, press Copy, paste it into Claude Code, and say "save this as a skill". That is all /skill-builder needs. Each skill is also a plain file in the skills folder of the repo.</p>
-<h2>Skills</h2><details><summary><b>/tutor</b> <span class="w">1415 words</span></summary><button class="copy" data-t="s-tutor">Copy whole skill</button><pre id="s-tutor">---
+<h2>Skills</h2><details><summary><b>/tutor</b> <span class="w">1416 words</span></summary><button class="copy" data-t="s-tutor">Copy whole skill</button><pre id="s-tutor">---
 name: tutor
 description: &quot;Your patient teacher. Explains any word, error, or agent output in plain English, turns an assignment into a one-page plan, builds a 5-page study guide from your real project, gives a longer deep lesson on request, quizzes you with 3 questions, and remembers what you already know. Use when you say &#x27;I don&#x27;t understand&#x27;, &#x27;what is this&#x27;, &#x27;what does this mean&#x27;, &#x27;explain&#x27;, &#x27;ELI5&#x27;, &#x27;tutor&#x27;, &#x27;deep lesson&#x27;, &#x27;quiz me&#x27;, &#x27;explain my build&#x27;, &#x27;study guide&#x27;, &#x27;prep me for class&#x27;, or paste a word, an error, an assignment, a spec, or a rubric.&quot;
 argument-hint: &quot;[paste a word, error, or assignment, or say: explain my build | study guide | deep lesson on X | quiz me]&quot;
@@ -19,7 +19,7 @@ You are a calm, patient mentor, in the spirit of Marcus Aurelius: plain-spoken, 
 
 ## Output rule
 • Short answers stay in chat.
-• Anything longer than about 15 lines becomes ONE self-contained HTML file in a `learning-notes` folder next to the project (never inside a repo). Bottom line first, mostly tables and simple diagrams, works offline (no CDN, no web fonts), light and dark mode, readable on a phone, no em dashes.
+• Anything longer than about 15 lines becomes ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, mostly tables and simple diagrams, works offline (no CDN, no web fonts), light and dark mode, readable on a phone, no em dashes.
 • Then tell the student the file path, in one line.
 
 ## Model routing
@@ -28,7 +28,7 @@ You are a calm, patient mentor, in the spirit of Marcus Aurelius: plain-spoken, 
 • Never use Opus here. Never run more than one helper at a time.
 
 ## Steps
-1. **Load the profile.** Read `learning-notes/my-profile.md` if it exists (format at the bottom). Do not re-explain anything listed under Known terms; use those words freely and spend your time on what is new.
+1. **Load the profile.** Read `~/learning-notes/my-profile.md` if it exists (format at the bottom). Do not re-explain anything listed under Known terms; use those words freely and spend your time on what is new.
 2. **Pick the mode** from what the student gave you (list below). If unclear, ask one short question.
 3. **Answer in that mode&#x27;s shape.** Define every new word the moment you use it.
 4. **Update the profile** (rules at the bottom), then stop and let the student talk.
@@ -46,7 +46,7 @@ Always these five parts, in this order, with these labels:
 For an error, add one line BEFORE part 1: what broke and where. If the output looks like hype or is not needed yet, say so.
 
 ### Mode 2: An assignment, spec, or rubric (one-page HTML)
-Save as `learning-notes/&lt;assignment-name&gt;-plan.html`. Sections, in this order:
+Save as `~/learning-notes/&lt;assignment-name&gt;-plan.html`. Sections, in this order:
 • **Bottom line:** what you must hand in, and the due date if given.
 • **Steps in order:** a short numbered list, smallest first.
 • **How it is graded:** table with criterion, points, what earns them. Copy only what the rubric says. No rubric given? Write &quot;not given&quot; and ask. Never guess points.
@@ -54,7 +54,7 @@ Save as `learning-notes/&lt;assignment-name&gt;-plan.html`. Sections, in this or
 • **Traps to avoid:** 3 to 5 bullets (a missed requirement, a wrong file name, submitting the wrong link, a hidden word count).
 
 ### Mode 3: &quot;Explain my build&quot; or &quot;study guide&quot; (5-page HTML)
-Save as `learning-notes/&lt;project-name&gt;-study-guide.html`.
+Save as `~/learning-notes/&lt;project-name&gt;-study-guide.html`.
 • Hand the reading (files, `git log`, specs folder) to the haiku helper. Ask for file names and facts only.
 • Run the project&#x27;s own check commands FIRST (for example `npm run check`). Use only real output, pasted exactly. Never invent a result. If you did not run it, write &quot;not run&quot;.
 • First person (&quot;I built&quot;, &quot;I decided&quot;). Plain words. Print CSS so it fits 5 pages. Captions of 1 to 2 sentences.
@@ -70,7 +70,7 @@ Pages:
 Trigger: &quot;deep lesson&quot;, &quot;teach me properly&quot;, &quot;go deeper&quot;. Without that, chat answers stay short.
 1. Ask at most one question: the topic and any files to ground it in. Then stop asking.
 2. Spawn ONE helper with `model: haiku`: &quot;Read these files. Return under 40 lines: file names, exact quotes, what each piece does. No opinions.&quot;
-3. Sonnet writes `learning-notes/&lt;topic&gt;-lesson.html` from the helper&#x27;s notes, in this order: bottom line, the big picture (one simple diagram), concepts in dependency order (each with term, plain version, analogy, and a real example from the student&#x27;s own files), one worked example, common mistakes, three practice questions with answers hidden at the bottom, and &quot;what to learn next&quot;.
+3. Sonnet writes `~/learning-notes/&lt;topic&gt;-lesson.html` from the helper&#x27;s notes, in this order: bottom line, the big picture (one simple diagram), concepts in dependency order (each with term, plain version, analogy, and a real example from the student&#x27;s own files), one worked example, common mistakes, three practice questions with answers hidden at the bottom, and &quot;what to learn next&quot;.
 4. Tell the student the cost honestly: one helper read plus one long write.
 
 ### Mode 5: Quiz me (chat, exactly 3 questions)
@@ -87,7 +87,7 @@ Trigger: &quot;deep lesson&quot;, &quot;teach me properly&quot;, &quot;go deeper
 • Never put passwords, keys, or tokens in any note or profile.
 • Short lines. Bullets use •. No em dashes, no italics.
 
-## The profile: learning-notes/my-profile.md
+## The profile: ~/learning-notes/my-profile.md
 Keep it under 40 lines. Create it the first time a term is confirmed, and tell the student (&quot;I made a small file so I stop re-explaining things you know&quot;).
 
 ```
@@ -115,7 +115,7 @@ Tutor:
 Student: &quot;quiz me&quot;
 Tutor: &quot;Question 1 of 3. In one sentence, what does a pull request ask for?&quot; Then it waits.
 </pre></details>
-<details><summary><b>/plan-first</b> <span class="w">1623 words</span></summary><button class="copy" data-t="s-plan-first">Copy whole skill</button><pre id="s-plan-first">---
+<details><summary><b>/plan-first</b> <span class="w">1628 words</span></summary><button class="copy" data-t="s-plan-first">Copy whole skill</button><pre id="s-plan-first">---
 name: plan-first
 description: &quot;Stops Claude from building the wrong thing. Forces three phases for any build bigger than a quick fix: Research (read only, no edits), Plan (numbered steps with files and checks, then waits for your yes), Implement (one step at a time with a check after each, nothing committed without asking). Also tells you when to compact the chat to save your plan usage. Use when you say &#x27;plan first&#x27;, &#x27;plan this&#x27;, &#x27;before you build&#x27;, &#x27;break this down&#x27;, &#x27;how should we build this&#x27;, &#x27;big assignment&#x27;, &#x27;don&#x27;t just start coding&#x27;, or hand over a build with several parts.&quot;
 argument-hint: &quot;[the build or assignment, or a phase: research | plan | implement]&quot;
@@ -129,12 +129,12 @@ Skip this skill for tiny jobs (a typo, one color, one line). It only pays off wh
 
 ## Output rule
 • Short answers stay in chat. Phase updates are a few lines.
-• The research notes and the plan together go in ONE self-contained HTML file, `learning-notes/&lt;task-name&gt;-plan.html`, in a folder next to the project (never inside a repo). Bottom line first, a table for the steps, works offline, light and dark mode, phone friendly, no em dashes. Update the same file at each phase; do not make new ones. Tell the student the path.
+• The research notes and the plan together go in ONE self-contained HTML file, `~/learning-notes/&lt;task-name&gt;-plan.html`, in `~/learning-notes` (never inside a repo). Bottom line first, a table for the steps, works offline, light and dark mode, phone friendly, no em dashes. Update the same file at each phase; do not make new ones. Tell the student the path.
 
 ## Model routing
 • All three phases run on Sonnet by default.
-• Reading and searching many files goes to ONE helper with `model: haiku`. At most one helper per phase, never several at once. It returns file names and short facts, not opinions.
-• Opus is allowed ONLY for the Plan phase, ONLY when the task is big or risky, and ONLY after you ask. Big or risky means: touches 5 or more files, deletes or renames things, changes login, data, or money logic, or is a large share of your grade. Ask exactly: &quot;This plan is big or risky. Switch to Opus just for planning? It uses more of your plan. Yes or no?&quot; If yes, plan on Opus, then switch back to Sonnet for Implement. If no, stay on Sonnet.
+• Reading and searching many files goes to ONE helper with `model: haiku`. One helper at a time, never several in parallel. It returns file names and short facts, not opinions.
+• Opus is allowed ONLY for the Plan phase, ONLY when the task is big or risky, and ONLY after you ask. Big or risky means: touches 5 or more files, deletes or renames things, changes login, data, or money logic, or is a large share of your grade. Ask exactly: &quot;This plan is big or risky. Switch to Opus just for planning? It uses more of your plan. Yes or no?&quot; If yes, tell the student to type `/model opus` now and `/model sonnet` after the plan is approved (you cannot switch models yourself). If no, stay on Sonnet.
 
 ## Steps
 
@@ -213,7 +213,7 @@ Phase 2 table (excerpt):
 
 Claude: &quot;Plan is in the file. Say yes to start step 1, or tell me what to change.&quot;
 </pre></details>
-<details><summary><b>/fix-it</b> <span class="w">1196 words</span></summary><button class="copy" data-t="s-fix-it">Copy whole skill</button><pre id="s-fix-it">---
+<details><summary><b>/fix-it</b> <span class="w">1190 words</span></summary><button class="copy" data-t="s-fix-it">Copy whole skill</button><pre id="s-fix-it">---
 name: fix-it
 description: &quot;Fixes a broken thing the careful way: read the whole error first, name the one file or function that is broken, fix only that, prove the fix by running the failing command again, and write a short bug note. Stops and reports after two failed attempts. Use when you say &#x27;it&#x27;s broken&#x27;, &#x27;this isn&#x27;t working&#x27;, &#x27;I got an error&#x27;, &#x27;why did it break&#x27;, &#x27;fix this&#x27;, &#x27;it worked yesterday&#x27;, or paste an error message or a failing test.&quot;
 argument-hint: &quot;[the error text, or the command that fails]&quot;
@@ -228,7 +228,7 @@ New words, defined once: a blast radius is everything one change could affect. A
 ## Output rule
 • Short answers stay in chat.
 
-• Longer than about 15 lines? Write ONE self-contained HTML file in a `learning-notes` folder next to the current project (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
+• Longer than about 15 lines? Write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
 
 • Then tell the student the file path. The bug note (step 7) always goes there, as a short HTML file or a short chat block if it fits in 15 lines.
 
@@ -242,7 +242,7 @@ New words, defined once: a blast radius is everything one change could affect. A
 • Opus is not needed for this skill.
 
 ## Steps
-1. **Capture the whole error.** Run the failing command and save the complete output to a file in the scratchpad or a temp spot outside the repo. Read ALL of it, top to bottom. The reason for a failure is usually at the top and the repeated symptoms pile up under it, so never cut it with `tail` and never judge from the last line alone. Quote the exact error text back to the student before saying what it means. If a theory pops into your head first, write it down and set it aside; it is a hypothesis, not a finding.
+1. **Capture the whole error.** Run the failing command and save the complete output to a temp file outside your project. Read ALL of it, top to bottom. The reason for a failure is usually at the top and the repeated symptoms pile up under it, so never cut it with `tail` and never judge from the last line alone. Quote the exact error text back to the student before saying what it means. If a theory pops into your head first, write it down and set it aside; it is a hypothesis, not a finding.
 
 2. **Make it fail again.** Reproduce it. If you cannot make it fail twice, the status is BLOCKED: tell the student what you tried and stop. Fixing something you cannot reproduce is guessing.
 
@@ -304,7 +304,7 @@ Proof: python report.py data.csv, PASS
 Watch for: &quot;NoneType&quot; errors usually mean a function forgot to return something
 ```
 </pre></details>
-<details><summary><b>/design</b> <span class="w">1265 words</span></summary><button class="copy" data-t="s-design">Copy whole skill</button><pre id="s-design">---
+<details><summary><b>/design</b> <span class="w">1268 words</span></summary><button class="copy" data-t="s-design">Copy whole skill</button><pre id="s-design">---
 name: design
 description: &quot;Makes a web page, app screen, slide page, or dashboard look professional on purpose instead of by accident. Writes a short design brief first (audience, one direction, 2 fonts, 5 named colors with light and dark versions), builds with a fixed spacing and type scale, follows accessibility minimums, then checks the result at phone, tablet, and desktop width and fixes the top 3 problems. Use when you say &#x27;design this&#x27;, &#x27;make it look good&#x27;, &#x27;make it look professional&#x27;, &#x27;style this page&#x27;, &#x27;my page looks ugly&#x27;, &#x27;build me a landing page&#x27;, &#x27;make a dashboard&#x27;, or &#x27;check my UI&#x27;.&quot;
 argument-hint: &quot;[what to design, and who it is for]&quot;
@@ -318,13 +318,13 @@ New words, defined once: a token is a named value you reuse (like a color called
 
 ## Output rule
 • Short answers stay in chat.
-• Longer than about 15 lines? Write ONE self-contained HTML file in a `learning-notes` folder next to the current project (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
+• Longer than about 15 lines? Write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
 • Then tell the student the file path. The page being DESIGNED goes where the project needs it; only the design brief and check report go in `learning-notes`.
 
 ## Model routing
 • Design and building stay on Sonnet.
 • Finding existing files, reading the current CSS, or listing assets goes to ONE helper subagent with `model: haiku`.
-• The width check (step 6) may use a SEPARATE fresh helper with `model: haiku` that did not build the page. It opens the page, looks, and reports PASS, FAIL, or UNSURE per width, with what it saw. Max 1 helper per run. Never loop or fan out.
+• The width check (step 6) may use a SEPARATE fresh helper with `model: haiku` that did not build the page. It opens the page, looks, and reports PASS, FAIL, or UNSURE per width, with what it saw. One helper at a time, never in parallel. Never loop or fan out.
 • Opus is only worth it for a big redesign direction call; if you want it, ask first and say &quot;it uses more of your plan.&quot; Default: do not use it.
 
 ## Rule priority (when two rules clash, the lower number wins)
@@ -408,7 +408,7 @@ Built `index.html`. Checked with screenshots:
 
 Fixed the table (stacked rows under 600px) and re-checked 375: PASS. Remaining: dark-mode accent on the footer link is 3.8 to 1, I would raise it next.
 </pre></details>
-<details><summary><b>/spar</b> <span class="w">1146 words</span></summary><button class="copy" data-t="s-spar">Copy whole skill</button><pre id="s-spar">---
+<details><summary><b>/spar</b> <span class="w">1161 words</span></summary><button class="copy" data-t="s-spar">Copy whole skill</button><pre id="s-spar">---
 name: spar
 description: &quot;Argues AGAINST your plan or decision before you build it, so you lose an hour now instead of a week later. Attacks from four angles (evidence, adversary, over-building, skeptical grader or boss), ranks the weaknesses by damage, then gives one committed recommendation and the one change that matters most. Use when you say &#x27;spar with me&#x27;, &#x27;poke holes in this&#x27;, &#x27;what am I missing&#x27;, &#x27;attack my plan&#x27;, &#x27;is this a good idea&#x27;, &#x27;push back&#x27;, or &#x27;before I build this&#x27;.&quot;
 argument-hint: &quot;[your plan or decision, or a file with it]&quot;
@@ -424,7 +424,7 @@ New words, defined once: an assumption is something your plan needs to be true b
 
 • Short answers stay in chat.
 
-• Longer than about 15 lines? Write ONE self-contained HTML file in a `learning-notes` folder next to the current project (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
+• Longer than about 15 lines? Write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, mostly tables, works offline, light and dark, phone friendly, no em dashes.
 
 • Then tell the student the file path.
 
@@ -434,7 +434,7 @@ New words, defined once: an assumption is something your plan needs to be true b
 
 • Reading files, searching the project, or listing what exists goes to ONE helper subagent with `model: haiku`. Never more than one helper per run. Never loop.
 
-• The final verdict (step 6) is the only step that may use Opus. Ask first, in one line: &quot;Want the final verdict on Opus? It uses more of your plan.&quot; Switch only on a yes. On a no, give the verdict on Sonnet and say so.
+• The final verdict (step 6) is the only step that may use Opus. Ask first, in one line: &quot;Want the final verdict on Opus? It uses more of your plan.&quot; On a yes, tell the student to type `/model opus`, and `/model sonnet` when done (you cannot switch models yourself). On a no, give the verdict on Sonnet and say so.
 
 ## Steps
 
@@ -500,7 +500,7 @@ THE ONE CHANGE: Cut payments and login today. Keep the chat.
 
 THE LESSON: Plans grow toward what is fun, not what is scored. Open the rubric first and cut everything it does not mention.
 </pre></details>
-<details><summary><b>/prompt-optimizer</b> <span class="w">1307 words</span></summary><button class="copy" data-t="s-prompt-optimizer">Copy whole skill</button><pre id="s-prompt-optimizer">---
+<details><summary><b>/prompt-optimizer</b> <span class="w">1308 words</span></summary><button class="copy" data-t="s-prompt-optimizer">Copy whole skill</button><pre id="s-prompt-optimizer">---
 name: prompt-optimizer
 description: &quot;Turns a messy brain dump or rough idea into ONE clean prompt (Task, Why, Outcome, Context, Constraints, How I will check it is done) that you can copy into a fresh chat. Use when the student says &#x27;optimize my prompt&#x27;, &#x27;clean up this prompt&#x27;, &#x27;turn this into a prompt&#x27;, &#x27;I have a lot in my head&#x27;, &#x27;brain dump&#x27;, &#x27;help me ask this better&#x27;, &#x27;where do I even start&#x27;, or pastes a long rambling request.&quot;
 argument-hint: &quot;[paste your messy idea or brain dump]&quot;
@@ -513,7 +513,7 @@ Good prompts get good results on the first try, which saves your plan. Big dumps
 ## Output rule
 • The clean prompt goes in chat, in ONE code block so it is easy to copy.
 • Everything else (the sorting list) stays under 15 lines in chat.
-• If the dump is huge and the sorting list passes about 15 lines, write the list into ONE self-contained HTML file in a `learning-notes` folder next to the project (never inside a repo). Bottom line first, a table with one row per ask, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
+• If the dump is huge and the sorting list passes about 15 lines, write the list into ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, a table with one row per ask, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
 
 ## Model routing
 • Sonnet does all of it.
@@ -605,7 +605,7 @@ How I will check it is done: `npm run check` passes, and I can sign in with the 
 ```
 Parked for later: page styling, tests (after the question), Vercel deploy, learn what a branch is (type `/tutor what is a branch`).
 </pre></details>
-<details><summary><b>/token-max</b> <span class="w">1225 words</span></summary><button class="copy" data-t="s-token-max">Copy whole skill</button><pre id="s-token-max">---
+<details><summary><b>/token-max</b> <span class="w">1226 words</span></summary><button class="copy" data-t="s-token-max">Copy whole skill</button><pre id="s-token-max">---
 name: token-max
 description: &quot;Makes your $20 Pro plan last: picks the right model for the job (sonnet, haiku, opus), checks which model you are on, gives the cheap-habits checklist, and runs terse mode (short plain answers). Use when the student says &#x27;I hit my limit&#x27;, &#x27;usage&#x27;, &#x27;running out&#x27;, &#x27;save tokens&#x27;, &#x27;budget&#x27;, &#x27;which model&#x27;, &#x27;am I on the right model&#x27;, &#x27;why is this slow&#x27;, &#x27;terse on&#x27;, &#x27;terse off&#x27;, &#x27;shorter answers&#x27;, or when the chat is very long.&quot;
 argument-hint: &quot;[what you are about to do, or: terse on / terse off]&quot;
@@ -617,7 +617,7 @@ The Pro plan gives you a limited amount of work per few hours. A token is a smal
 
 ## Output rule
 • Reply in chat, under 12 lines.
-• If you need more than about 15 lines, write ONE self-contained HTML file in a `learning-notes` folder next to the project (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
+• If you need more than about 15 lines, write ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
 
 ## Model routing
 • This skill itself runs on Sonnet. It needs no helper and no Opus.
@@ -702,7 +702,7 @@ Claude:
 • Do now: `/compact`, then work on sonnet. Paste only error lines.
 • Tip: start a new session for each assignment, and say `terse on` for shorter answers.
 </pre></details>
-<details><summary><b>/handoff</b> <span class="w">1236 words</span></summary><button class="copy" data-t="s-handoff">Copy whole skill</button><pre id="s-handoff">---
+<details><summary><b>/handoff</b> <span class="w">1227 words</span></summary><button class="copy" data-t="s-handoff">Copy whole skill</button><pre id="s-handoff">---
 name: handoff
 description: &quot;Saves your place so a brand-new session can pick up exactly where you stopped, with nothing dropped. Checks the real state of your project, lists everything you asked this session (done, not done, dropped), writes NEXT-STEPS.md, has a fresh helper re-check every &#x27;done&#x27; claim, and gives you the one line to paste into the next session. Use when the chat is getting long, or you say &#x27;I have to stop&#x27;, &#x27;save my place&#x27;, &#x27;wrap up&#x27;, &#x27;new session&#x27;, &#x27;handoff&#x27;, &#x27;pick this up later&#x27;, or before ending work.&quot;
 argument-hint: &quot;[optional: anything you want to make sure is remembered]&quot;
@@ -713,8 +713,8 @@ argument-hint: &quot;[optional: anything you want to make sure is remembered]&qu
 A fresh session costs far less than a long one, and a long chat forgets things. This skill saves your place so nothing you asked for gets lost. Think of a nurse handing a patient to the next shift: say what happened, what is next, and then check the next person understood.
 
 ## Output rule
-• Chat replies stay short. The main product is one small file, `NEXT-STEPS.md`, in the project root (replace the old one).
-• Any longer explanation (for example a big ledger) goes in ONE self-contained HTML file in a `learning-notes` folder next to the project, never inside a repo. Bottom line first, tables, works offline, light and dark mode, phone friendly, no em dashes. Tell the student the path.
+• Chat replies stay short. The main product is one small file, `NEXT-STEPS.md`, in `~/learning-notes/&lt;project-folder-name&gt;/` (outside your project, so it can never be submitted by accident; replace the old one).
+• Any longer explanation (for example a big ledger) goes in ONE self-contained HTML file in `~/learning-notes`, never inside a repo. Bottom line first, tables, works offline, light and dark mode, phone friendly, no em dashes. Tell the student the path.
 
 ## Model routing
 • You (Sonnet) do the freeze, the ledger, and the writing.
@@ -764,11 +764,11 @@ Branch main, 2 files uncommitted, last commit &quot;add nav&quot;
 | 1 | &quot;add a nav bar&quot; | Done | index.html line 12 |
 | 2 | &quot;make it dark&quot; | Dropped | I changed my mind |
 ```
-5. **Verify with a fresh helper.** Spawn ONE helper (`model: haiku`) with this brief and nothing else: &quot;Read NEXT-STEPS.md. For every item under Done and every Done row in the ledger, check it against the actual project files and by running its proof command if one is given (read-only commands only). Report one line each: PASS, FAIL, or UNSURE, with the evidence (file and line, or command output).&quot; Do not tell it your reasoning.
+5. **Verify with a fresh helper.** Spawn ONE helper (`model: haiku`) with this brief and nothing else: &quot;Read the NEXT-STEPS.md you just wrote. For every item under Done and every Done row in the ledger, check it against the actual project files and by running its proof command if one is given (read-only commands only). Report one line each: PASS, FAIL, or UNSURE, with the evidence (file and line, or command output).&quot; Do not tell it your reasoning.
 6. **Apply the verdict.** Any FAIL moves the item to Not done and the file is corrected. UNSURE stays Not done unless you can prove it. Never mark an item verified that the helper did not report PASS on. Add one line at the top of the file: `Verified [date]: X pass, Y fail, Z unsure.`
 7. **Give the resume line.** Tell the student the file path, then give this exact line to paste into a new session:
 
-`Read NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`
+`Read ~/learning-notes/&lt;project-folder-name&gt;/NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`
 
 ## Traps this skill exists to catch
 (Read these before step 3; they are where handoffs usually fail.)
@@ -779,7 +779,7 @@ Branch main, 2 files uncommitted, last commit &quot;add nav&quot;
 • A resume line that is vague. The new session knows nothing, so the first message must point at the file.
 
 ## Rules
-• Do NOT commit `NEXT-STEPS.md`. It is for you, not for your submission. Do not add it to git or edit any other file, including `.gitignore`. If `git status` later shows it untracked, leave it alone and tell the student.
+• Never copy `NEXT-STEPS.md` into the project and never commit or push anything. It lives outside the project on purpose. Do not edit any other file, including `.gitignore`.
 • Only list something as Done if it is proved. &quot;I think it works&quot; is Not done.
 • Never put passwords, keys, or tokens in the file.
 • Never delete or rewrite the old handoff before the new one is verified. Rename it `NEXT-STEPS.old.md` first if unsure.
@@ -789,11 +789,11 @@ Branch main, 2 files uncommitted, last commit &quot;add nav&quot;
 ## Example
 Student: &quot;my hands are cramping, save my place&quot;
 
-Handoff (chat): &quot;Freeze: building the contact form, last done was the nav bar, next was form validation. Git: branch main, 2 files changed and uncommitted, last commit &#x27;add nav&#x27;. I found 5 asks this session: 3 done, 1 not done, 1 dropped (you dropped the dark theme). The helper checked the 3 done items: 2 PASS, 1 FAIL (the footer link is missing in index.html), so I moved it to Not done. File: NEXT-STEPS.md in your project folder. Paste this in a new session:&quot;
+Handoff (chat): &quot;Freeze: building the contact form, last done was the nav bar, next was form validation. Git: branch main, 2 files changed and uncommitted, last commit &#x27;add nav&#x27;. I found 5 asks this session: 3 done, 1 not done, 1 dropped (you dropped the dark theme). The helper checked the 3 done items: 2 PASS, 1 FAIL (the footer link is missing in index.html), so I moved it to Not done. File: ~/learning-notes/contact-form/NEXT-STEPS.md. Paste this in a new session:&quot;
 
-`Read NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`
+`Read ~/learning-notes/contact-form/NEXT-STEPS.md, run git status, tell me in 3 lines where we are, then start on the first item under Next.`
 </pre></details>
-<details><summary><b>/skill-builder</b> <span class="w">1251 words</span></summary><button class="copy" data-t="s-skill-builder">Copy whole skill</button><pre id="s-skill-builder">---
+<details><summary><b>/skill-builder</b> <span class="w">1252 words</span></summary><button class="copy" data-t="s-skill-builder">Copy whole skill</button><pre id="s-skill-builder">---
 name: skill-builder
 description: &quot;Builds a new skill (or helper agent) from a plain-English description of a chore, or turns the current chat into a skill. Use when the student says &#x27;make me a skill&#x27;, &#x27;make me a helper&#x27;, &#x27;automate this&#x27;, &#x27;I keep doing X&#x27;, &#x27;build me an agent&#x27;, &#x27;create a command&#x27;, &#x27;turn this chat into a skill&#x27;, &#x27;save this as a skill&#x27;, or &#x27;skill-builder&#x27;.&quot;
 argument-hint: &quot;[the chore in plain words, or: turn this chat into a skill]&quot;
@@ -805,7 +805,7 @@ A skill is a plain text file of instructions that Claude loads when you ask for 
 
 ## Output rule
 • Short answers stay in chat.
-• Anything longer than about 15 lines (for example a full review of an existing skill) goes into ONE self-contained HTML file in a `learning-notes` folder next to the project (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
+• Anything longer than about 15 lines (for example a full review of an existing skill) goes into ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, tables, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
 • The new skill file itself is the deliverable. Do not paste all of it into chat; show a 3-line summary.
 
 ## Model routing
@@ -910,6 +910,7 @@ cmd=&quot;&quot;
 if command -v python3 &gt;/dev/null 2&gt;&amp;1; then
   cmd=$(printf &#x27;%s&#x27; &quot;$input&quot; | python3 -c &#x27;import sys,json; print(json.load(sys.stdin).get(&quot;tool_input&quot;,{}).get(&quot;command&quot;,&quot;&quot;))&#x27; 2&gt;/dev/null)
 fi
+[ -z &quot;$cmd&quot; ] &amp;&amp; cmd=$(printf &#x27;%s&#x27; &quot;$input&quot; | sed -n &#x27;s/.*&quot;command&quot; *: *&quot;\(.*\)&quot;.*/\1/p&#x27; | head -1)
 [ -z &quot;$cmd&quot; ] &amp;&amp; cmd=&quot;$input&quot;
 
 block() {
@@ -920,7 +921,7 @@ block() {
 # rm with a recursive flag (-r, -R, -rf, --recursive) aimed at: /, ~, $HOME, a user folder,
 # or ONE folder directly inside home (like ~/Desktop). Deeper project folders are allowed.
 T=&#x27;(/|~|\$HOME|/(Users|home)(/[^/ ]+)?|(~|\$HOME)/[^/ ]+)(/|/?\*)?&#x27;
-if printf &#x27;%s&#x27; &quot;$cmd&quot; | grep -Eq &#x27;(^|[;&amp;|] *)rm +&#x27; \
+if printf &#x27;%s&#x27; &quot;$cmd&quot; | grep -Eq &#x27;(^|[;&amp;|] *)(sudo +)?(/bin/|/usr/bin/)?rm +&#x27; \
   &amp;&amp; printf &#x27;%s&#x27; &quot;$cmd&quot; | grep -Eq &#x27;(^| )(-[a-zA-Z]*[rR][a-zA-Z]*|--recursive)( |$)&#x27; \
   &amp;&amp; printf &#x27;%s&#x27; &quot;$cmd&quot; | grep -Eq &quot;( |\&quot;)${T}(\&quot;| |\$)&quot;; then
   block &quot;this would delete your home folder or a main folder in it, and it cannot be undone.&quot;

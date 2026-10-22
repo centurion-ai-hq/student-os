@@ -12,12 +12,12 @@ Skip this skill for tiny jobs (a typo, one color, one line). It only pays off wh
 
 ## Output rule
 • Short answers stay in chat. Phase updates are a few lines.
-• The research notes and the plan together go in ONE self-contained HTML file, `learning-notes/<task-name>-plan.html`, in a folder next to the project (never inside a repo). Bottom line first, a table for the steps, works offline, light and dark mode, phone friendly, no em dashes. Update the same file at each phase; do not make new ones. Tell the student the path.
+• The research notes and the plan together go in ONE self-contained HTML file, `~/learning-notes/<task-name>-plan.html`, in `~/learning-notes` (never inside a repo). Bottom line first, a table for the steps, works offline, light and dark mode, phone friendly, no em dashes. Update the same file at each phase; do not make new ones. Tell the student the path.
 
 ## Model routing
 • All three phases run on Sonnet by default.
-• Reading and searching many files goes to ONE helper with `model: haiku`. At most one helper per phase, never several at once. It returns file names and short facts, not opinions.
-• Opus is allowed ONLY for the Plan phase, ONLY when the task is big or risky, and ONLY after you ask. Big or risky means: touches 5 or more files, deletes or renames things, changes login, data, or money logic, or is a large share of your grade. Ask exactly: "This plan is big or risky. Switch to Opus just for planning? It uses more of your plan. Yes or no?" If yes, plan on Opus, then switch back to Sonnet for Implement. If no, stay on Sonnet.
+• Reading and searching many files goes to ONE helper with `model: haiku`. One helper at a time, never several in parallel. It returns file names and short facts, not opinions.
+• Opus is allowed ONLY for the Plan phase, ONLY when the task is big or risky, and ONLY after you ask. Big or risky means: touches 5 or more files, deletes or renames things, changes login, data, or money logic, or is a large share of your grade. Ask exactly: "This plan is big or risky. Switch to Opus just for planning? It uses more of your plan. Yes or no?" If yes, tell the student to type `/model opus` now and `/model sonnet` after the plan is approved (you cannot switch models yourself). If no, stay on Sonnet.
 
 ## Steps
 

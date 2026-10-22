@@ -22,15 +22,14 @@
 ## How to work
 • One spec section at a time. Show a plan and wait for my yes before building.
 • Small changes. Commit after each section.
-• Before I submit, run /grade-it. Never say "done" without real output.
+• Before I submit, run /plan-first or ask for a check. Never say "done" without real output.
 • Keep this file short.
 
 ## My commands
 • /tutor: explain anything I do not understand
-• /grade-it: grade my work before I submit
 • /handoff: save my place
-• /budget: stretch my Pro plan
-• /agent-builder: build me a helper
+• /token-max: stretch my Pro plan
+• /skill-builder: build me a command
 
 ## Voice
 • Explain every new term in plain English, in one line.

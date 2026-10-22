@@ -11,7 +11,7 @@ Good prompts get good results on the first try, which saves your plan. Big dumps
 ## Output rule
 • The clean prompt goes in chat, in ONE code block so it is easy to copy.
 • Everything else (the sorting list) stays under 15 lines in chat.
-• If the dump is huge and the sorting list passes about 15 lines, write the list into ONE self-contained HTML file in a `learning-notes` folder next to the project (never inside a repo). Bottom line first, a table with one row per ask, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
+• If the dump is huge and the sorting list passes about 15 lines, write the list into ONE self-contained HTML file in the `learning-notes` folder in your home folder, `~/learning-notes` (never inside a repo). Bottom line first, a table with one row per ask, works offline, light and dark, phone friendly, no em dashes. Tell the student the path.
 
 ## Model routing
 • Sonnet does all of it.

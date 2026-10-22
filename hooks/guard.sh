@@ -6,6 +6,7 @@ cmd=""
 if command -v python3 >/dev/null 2>&1; then
   cmd=$(printf '%s' "$input" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("tool_input",{}).get("command",""))' 2>/dev/null)
 fi
+[ -z "$cmd" ] && cmd=$(printf '%s' "$input" | sed -n 's/.*"command" *: *"\(.*\)".*/\1/p' | head -1)
 [ -z "$cmd" ] && cmd="$input"
 
 block() {
@@ -16,7 +17,7 @@ block() {
 # rm with a recursive flag (-r, -R, -rf, --recursive) aimed at: /, ~, $HOME, a user folder,
 # or ONE folder directly inside home (like ~/Desktop). Deeper project folders are allowed.
 T='(/|~|\$HOME|/(Users|home)(/[^/ ]+)?|(~|\$HOME)/[^/ ]+)(/|/?\*)?'
-if printf '%s' "$cmd" | grep -Eq '(^|[;&|] *)rm +' \
+if printf '%s' "$cmd" | grep -Eq '(^|[;&|] *)(sudo +)?(/bin/|/usr/bin/)?rm +' \
   && printf '%s' "$cmd" | grep -Eq '(^| )(-[a-zA-Z]*[rR][a-zA-Z]*|--recursive)( |$)' \
   && printf '%s' "$cmd" | grep -Eq "( |\")${T}(\"| |\$)"; then
   block "this would delete your home folder or a main folder in it, and it cannot be undone."
