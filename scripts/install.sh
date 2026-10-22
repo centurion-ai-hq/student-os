@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Student OS installer. Copies skills and hooks, merges two hook lines into settings.json.
+# Student Skill Pack installer. Copies skills and hooks, merges two hook lines into settings.json.
 # Usage:
 #   bash scripts/install.sh --all
 #   bash scripts/install.sh --skills tutor,spar --hooks welcome,guard
@@ -157,9 +157,9 @@ if [ "$uninstall" = 1 ]; then
   done
   rmdir "$HOOKS_DIR" "$CLAUDE_DIR/student-os" 2>/dev/null
   if [ -f "$SETTINGS" ]; then
-    if [ -n "$PY" ]; then settings_edit uninstall "$(printf '%s' "$hooks" | tr ' ' ',')"; else echo "Python not found: remove the two Student OS lines from $SETTINGS by hand."; fi
+    if [ -n "$PY" ]; then settings_edit uninstall "$(printf '%s' "$hooks" | tr ' ' ',')"; else echo "Python not found: remove the Student Skill Pack lines from $SETTINGS by hand."; fi
   fi
-  echo "Student OS removed."
+  echo "Student Skill Pack removed."
   echo "  skills:${removed_s:- none}"
   echo "  hooks: ${removed_h:- none}"
   exit 0
@@ -194,7 +194,7 @@ if [ -n "$hooks" ]; then
   fi
 fi
 
-echo "Student OS installed."
+echo "Student Skill Pack installed."
 echo "  skills:${done_s:- none}"
 [ -n "$skipped_s" ] && echo "  skipped (you already have one with that name):$skipped_s"
 echo "  hooks: ${done_h:- none}$hook_note"

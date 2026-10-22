@@ -1,8 +1,8 @@
 # Third-party notices
 
-Student OS was written from scratch. No code, text, lists or files were copied from the projects below. Their public ideas inspired parts of two Student OS pieces, and we credit them. Because the ideas, not the words, were used, no license requires a notice. We include the notices anyway.
+Student Skill Pack was written from scratch. No code, text, lists or files were copied from the projects below. Their public ideas inspired parts of two Student Skill Pack pieces, and we credit them. Because the ideas, not the words, were used, no license requires a notice. We include the notices anyway.
 
-| Student OS piece | Inspired by | License |
+| Student Skill Pack piece | Inspired by | License |
 |---|---|---|
 | `/design`: the order of design priorities (accessibility first) | UI UX Pro Max, https://github.com/nextlevelbuilder/ui-ux-pro-max-skill | MIT, Copyright (c) 2024 Next Level Builder |
 | `/design`: pick one art direction, check at three widths, fix the top problems | taste-skill, https://github.com/Leonxlnx/taste-skill | MIT, Copyright (c) 2026 Leonxlnx |
@@ -21,4 +21,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Apache License 2.0 (caveman)
 
-The full text is at https://www.apache.org/licenses/LICENSE-2.0. Student OS does not include or modify any caveman file.
+The full text is at https://www.apache.org/licenses/LICENSE-2.0. Student Skill Pack does not include or modify any caveman file.

@@ -1,8 +1,8 @@
-Install Student OS for me. Keep every message short. Change nothing except what the installer script does.
+Install Student Skill Pack for me. Keep every message short. Change nothing except what the installer script does.
 
 1. Detect my operating system (Mac or Windows).
 2. Run `git --version`. If git is missing, give me the one step to install it (Mac: `xcode-select --install`; Windows: Git for Windows from git-scm.com) and stop.
-3. Clone https://github.com/centurion-ai-hq/student-os into a folder named student-os in my home folder (so it stays put), or run `git pull` there if it is already cloned.
+3. Clone https://github.com/centurion-ai-hq/student-skill-pack into a folder named student-skill-pack in my home folder (so it stays put), or run `git pull` there if it is already cloned.
 4. Ask ONE AskUserQuestion pop-up with three options:
    • "Install everything (9 skills + 3 hooks)" [Recommended]
    • "Choose one by one"

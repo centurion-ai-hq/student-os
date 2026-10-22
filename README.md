@@ -1,4 +1,4 @@
-# Student OS
+# Student Skill Pack
 
 Nine simple commands for Claude Code in CIS 591.
 
@@ -37,12 +37,12 @@ Whenever I paste a term, an error, or a message from my coding agent:
 Stay under 150 words unless I ask for more. Do not change any code or files.
 ```
 
-To remove everything: `bash scripts/install.sh --uninstall` (run it from the student-os folder in your home folder).
+To remove everything: `bash scripts/install.sh --uninstall` (run it from the student-skill-pack folder in your home folder).
 
 Optional: `templates/CLAUDE.md` is a short starter file you can copy into a project so Claude knows your course.
 
 ## Credits
 
-Student OS is original work. Two pieces were inspired by public projects: `/design` by [UI UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) (MIT) and [taste-skill](https://github.com/Leonxlnx/taste-skill) (MIT), and the `terse` hook by [caveman](https://github.com/JuliusBrussee/caveman) (Apache 2.0). Nothing was copied. Details in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Student Skill Pack is original work. Two pieces were inspired by public projects: `/design` by [UI UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) (MIT) and [taste-skill](https://github.com/Leonxlnx/taste-skill) (MIT), and the `terse` hook by [caveman](https://github.com/JuliusBrussee/caveman) (Apache 2.0). Nothing was copied. Details in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 Made by Luis Vega for CIS 591.
