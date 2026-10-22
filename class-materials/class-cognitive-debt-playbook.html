@@ -71,7 +71,7 @@
 <h2>3. My system: a tutor on call inside Claude Code</h2>
 <p>I never leave Claude Code to learn. I built the tutor into my setup as a <b>skill</b>, a saved instruction set Claude loads on command.</p>
 <ul>
-  <li><b>Quick term:</b> I type <code>/eli5</code> mid-build. It answers in the voice of a patient mentor I modeled on Marcus Aurelius: answer first, plain words, one analogy, then the real term. A few lines, and the build carries on.</li>
+  <li><b>Quick term:</b> I type <code>/tutor</code> mid-build. It answers in the voice of a patient mentor I modeled on Marcus Aurelius: answer first, plain words, one analogy, then the real term. A few lines, and the build carries on.</li>
   <li><b>Deep lesson:</b> I hand the teaching to a <b>separate agent</b> (a second AI worker with its own memory). It reads my repo and writes me a guide while my build session stays clean. That is how my master guide was made.</li>
 </ul>
 <p>You do not need my system to start. This prompt does the same job as the skill. Paste it into your session, or save it as your own skill later.</p>
@@ -83,7 +83,7 @@ Whenever I paste a term, an error, or a message from my coding agent:
 4. Give one real-world analogy.
 5. Tell me why it matters for the project I am building, and whether I need it now or can learn it later.
 Stay under 150 words unless I ask for more.</pre>
-<p class="muted">To make it a skill: ask Claude Code to "save this prompt as a skill called eli5". Then <code>/eli5</code> works in every session.</p>
+<p class="muted">To make it a skill: ask Claude Code to "save this prompt as a skill called tutor". Then <code>/tutor</code> works in every session.</p>
 
 <h2>4. The "explain my build" prompt (once, after the build works)</h2>
 <p>This is the deep-lesson half of my system. Run it <b>after</b> your tests pass. In my setup a separate teaching agent runs it; without one, open a <b>fresh</b> Claude Code session on your project folder. Either way it can read the whole repo, and your build session stays clean.</p>
@@ -127,7 +127,7 @@ Be honest about what I decided and what the AI did.</pre>
 <div class="card teal">
   <ol>
     <li><b>Build</b> in Claude Code: read the spec, plan, build, verify.</li>
-    <li><b>Ask</b> the tutor (<code>/eli5</code> or the prompt) the moment a term blocks you. Park the rest in a note.</li>
+    <li><b>Ask</b> the tutor (<code>/tutor</code> or the prompt) the moment a term blocks you. Park the rest in a note.</li>
     <li><b>Ship</b> when <code>npm run check</code> passes and the site is live.</li>
     <li><b>Explain</b>: run the "explain my build" prompt in a fresh session.</li>
     <li><b>Test yourself</b>: take the quiz, and re-ask Chat about anything you miss.</li>

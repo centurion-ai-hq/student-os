@@ -29,4 +29,8 @@ Whenever I paste a term, an error, or a message from my coding agent:
 Stay under 150 words unless I ask for more. Do not change any code or files.
 ```
 
+To remove everything: `bash scripts/install.sh --uninstall` (run it from the cloned folder).
+
+Optional: `templates/CLAUDE.md` is a short starter file you can copy into a project so Claude knows your course.
+
 Made by Luis Vega for CIS 591.

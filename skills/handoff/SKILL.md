@@ -27,7 +27,7 @@ A fresh session costs far less than a long one. Save your place, then start clea
 ```
 
 3. Keep it under 25 lines. Plain words.
-4. Offer to commit it: "NEXT-STEPS: save progress".
+4. Do not commit it. It is for you, not for your submission. Tell the student where the file is.
 5. Tell the student: "Start a new session and say: read NEXT-STEPS.md and continue."
 
 ## Rules

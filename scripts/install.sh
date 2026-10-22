@@ -172,7 +172,7 @@ for s in $skills; do
     skipped_s="$skipped_s $s"; continue
   fi
   mkdir -p "$dest"
-  cp "$SRC/skills/$s/SKILL.md" "$dest/SKILL.md"
+  cp "$SRC/skills/$s/SKILL.md" "$dest/SKILL.md" || die "could not copy skill $s"
   : > "$dest/$MARK"
   done_s="$done_s $s"
 done

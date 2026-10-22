@@ -18,7 +18,7 @@ The Pro plan has tight limits. Print this checklist, then apply what you can rig
 • Chat getting long? Run `/compact`, or run `/handoff` and start fresh.
 • Keep CLAUDE.md short. It is re-read every time.
 • Quick question about a word? Use `/tutor` as a separate short question, not mid-build.
-• Searching many files? Use a helper subagent pinned to `model: haiku`.
+• Searching many files? Ask Claude to use a cheaper helper (the Haiku model) for the searching.
 • Do not paste whole files or huge logs. Paste the error lines.
 
 ## Then do

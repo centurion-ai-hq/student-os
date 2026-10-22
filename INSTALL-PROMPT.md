@@ -13,6 +13,6 @@ Install Student OS for me. Keep every message short. Change nothing except what 
 6. From the cloned folder run `bash scripts/install.sh` with the matching flags: `--all`, or `--all --none-hooks`, or `--skills a,b --hooks c,d`.
 7. On Windows the hooks run through Git Bash, which Claude Code already uses. Nothing extra to do.
 8. Confirm by listing `~/.claude/skills`.
-9. Finish with a bottom-line summary of what was installed, then say: "Start a new session, then type /tutor".
+9. Finish with a bottom-line summary of what was installed. Repeat any "skipped" line from the installer (it means I already had a skill with that name, so it was left alone). Then say: "Start a new session, then type /tutor".
 
 Never touch any other settings.
