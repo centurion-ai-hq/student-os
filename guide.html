@@ -47,31 +47,37 @@ code{background:rgba(127,127,127,.18);padding:1px 5px;border-radius:4px;font-siz
 <body>
 <main>
   <h1>Student OS</h1>
-  <p class="bottom">Five commands that make Claude Code teach you while it helps.</p>
+  <p class="bottom">Nine commands that make Claude Code teach you while it helps.</p>
 
   <h2>Why</h2>
   <p>Cognitive debt is what builds up when AI does the thinking and you only copy the answer: it works today, but you cannot explain it tomorrow. These commands keep you the one who understands.</p>
 
-  <h2>Your 5 commands</h2>
+  <h2>Your 9 commands</h2>
   <div class="grid">
     <div class="card"><b>/tutor</b><span>Explains anything in plain English.</span><span class="say">"I don't understand this error"</span></div>
-    <div class="card"><b>/grade-it</b><span>Grades your work before you submit.</span><span class="say">"Grade my work"</span></div>
-    <div class="card"><b>/handoff</b><span>Saves your place for a fresh session.</span><span class="say">"Save my place"</span></div>
-    <div class="card"><b>/budget</b><span>Stretches your Pro plan.</span><span class="say">"I am running out of usage"</span></div>
-    <div class="card"><b>/agent-builder</b><span>Builds your own helper.</span><span class="say">"Make me a helper that summarizes my readings"</span></div>
+    <div class="card"><b>/plan-first</b><span>Research, plan, then build.</span><span class="say">"Plan this assignment first"</span></div>
+    <div class="card"><b>/fix-it</b><span>Fixes one error and proves it.</span><span class="say">"fix this error"</span></div>
+    <div class="card"><b>/design</b><span>Makes your page look professional.</span><span class="say">"make this page look better"</span></div>
+    <div class="card"><b>/spar</b><span>Argues against your plan.</span><span class="say">"poke holes in my plan"</span></div>
+    <div class="card"><b>/prompt-optimizer</b><span>Cleans up a messy idea.</span><span class="say">"turn this brain dump into a prompt"</span></div>
+    <div class="card"><b>/token-max</b><span>Stretches your Pro plan.</span><span class="say">"I am running out of usage"</span></div>
+    <div class="card"><b>/handoff</b><span>Saves your place.</span><span class="say">"save my place"</span></div>
+    <div class="card"><b>/skill-builder</b><span>Builds your own command.</span><span class="say">"turn this into a skill"</span></div>
   </div>
 
-  <h2>2 safety hooks</h2>
+  <h2>3 hooks: small helpers that run on their own</h2>
   <table>
-    <tr><td>welcome</td><td>Shows your commands every time you start a session.</td></tr>
-    <tr><td>guard</td><td>Blocks deleting your home folder, force push, hard reset, and repo delete.</td></tr>
+    <tr><td>welcome</td><td>Starts each session by showing your commands. About 60 tokens.</td></tr>
+    <tr><td>terse</td><td>Tells Claude to answer in short plain sentences all session, which saves your plan. About 70 tokens. Say "terse off" to stop it.</td></tr>
+    <tr><td>guard</td><td>Watches every terminal command and blocks the dangerous ones: deleting your home folder, force push, hard reset, repo delete. Costs nothing unless it blocks.</td></tr>
   </table>
 
-  <h2>Install in 3 steps</h2>
+  <h2>Install in 3 steps (plus an optional extra)</h2>
   <ol>
     <li>Open <code>github.com/centurion-ai-hq/student-os</code> and copy the text in <code>INSTALL-PROMPT.md</code>.</li>
     <li>Paste it into Claude Code.</li>
     <li>Pick "Install everything", or choose one by one. Then start a new session.</li>
+    <li>Optional: Anthropic publishes free official skills. Type <code>/plugin marketplace add anthropics/skills</code>, then <code>/plugin</code> to browse.</li>
   </ol>
 
   <div class="strip">

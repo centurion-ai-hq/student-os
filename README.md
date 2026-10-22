@@ -16,6 +16,8 @@ Nine simple commands for Claude Code in CIS 591.
 
 Plus three hooks (small helpers that run on their own): `welcome` shows your commands, `terse` keeps replies short, `guard` blocks dangerous commands.
 
+Want the exact text of every skill so you can paste it into Claude Code yourself? Open [full-skills.html](full-skills.html) and press Copy.
+
 ## Install
 
 Paste the prompt in [INSTALL-PROMPT.md](INSTALL-PROMPT.md) into Claude Code.
